@@ -32,7 +32,7 @@ export const APP_CONFIG = {
   logo: 'https://ik.imagekit.io/digitalthriv/digital-thriv/dt-logo.png',
   description: 'Order Confirmation and Verification Dashboard',
   whatsappNumber: '8922027106',
-  contactEmail: 'digitalthriv@gmail.com',
+  contactEmail: 'Support@digitalthriv.com',
   contactPhone: '+91 9673073070',
   contactAddress: 'BANDA, Uttar Pradesh 208025, India',
   whatsappCommunityUrl: 'https://chat.whatsapp.com/HzHEgYFDOFdKOBAfnMribl',
@@ -92,7 +92,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a href="https://wa.me/919429692670?text=Hello%2C%20interested%20in%20your%20web%20%26%20marketing%20services" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918922027106?text=Hello%2C%20interested%20in%20your%20web%20%26%20marketing%20services" target="_blank" rel="noopener noreferrer">
                   Let&apos;s Talk
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </a>
@@ -103,7 +103,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a href="https://wa.me/919429692670?text=Hello%2C%20I%27d%20like%20to%20get%20started%20with%20your%20services" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/918922027106?text=Hello%2C%20I%27d%20like%20to%20get%20started%20with%20your%20services" target="_blank" rel="noopener noreferrer">
                   Get Started
                   <Rocket className="ml-2 h-6 w-6" />
                 </a>
@@ -541,14 +541,14 @@ export default async function Home() {
                     <div className="flex flex-col items-center space-y-2 p-6 rounded-lg bg-background border hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                     <Mail className="h-8 w-8 text-primary" />
                     <span className="font-medium">Email</span>
-                    <span className="text-sm text-muted-foreground">Digitalthriv@gmail.com</span>
+                    <span className="text-sm text-muted-foreground">Sales@digitalthriv.com</span>
                     </div>
                   </ScrollAnimation>
                   <ScrollAnimation delay={300}>
                     <div className="flex flex-col items-center space-y-2 p-6 rounded-lg bg-background border hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                     <Phone className="h-8 w-8 text-primary" />
-                    <span className="font-medium">Phone</span>
-                    <span className="text-sm text-muted-foreground">+91 94296 92670</span>
+                    <span className="font-medium">Whatsapp</span>
+                    <span className="text-sm text-muted-foreground">+91 8922027106</span>
                     </div>
                   </ScrollAnimation>
                   <ScrollAnimation delay={400}>
