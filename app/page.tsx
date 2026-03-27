@@ -25,21 +25,9 @@ import {
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollAnimation } from '@/components/scroll-animation';
-// App Constants
-export const APP_CONFIG = {
-  name: 'DIGITAL THRIV',
-  dashboardUrl: 'https://dashboard.digitalthriv.com',
-  logo: 'https://ik.imagekit.io/digitalthriv/digital-thriv/dt-logo.png',
-  description: 'Order Confirmation and Verification Dashboard',
-  whatsappNumber: '6390246088',
-  contactEmail: 'Support@digitalthriv.com',
-  contactPhone: '6390246088',
-  contactAddress: 'BANDA, Uttar Pradesh 208025, India',
-  whatsappCommunityUrl: 'https://chat.whatsapp.com/HzHEgYFDOFdKOBAfnMribl',
-} as const;
+import { APP_CONFIG, contactTelHref, whatsappUrl } from '@/lib/constants';
 
-
-export default async function Home() {
+export default function Home() {
 
 
   return (
@@ -62,7 +50,11 @@ export default async function Home() {
         </div>
             <div className="flex items-center gap-4">
               {/* <ThemeToggle /> */}
-          <Link href="/auth/signin">
+          <Link
+            href={`${APP_CONFIG.dashboardUrl}/auth/signin`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button size="lg">Sign In</Button>
           </Link>
         </div>
@@ -92,7 +84,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a href="https://wa.me/916390246088?text=Hello%2C%20interested%20in%20your%20web%20%26%20marketing%20services" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappUrl("Hello, interested in your web & marketing services")} target="_blank" rel="noopener noreferrer">
                   Let&apos;s Talk
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </a>
@@ -103,7 +95,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a href="https://wa.me/916390246088?text=Hello%2C%20I%27d%20like%20to%20get%20started%20with%20your%20services" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappUrl("Hello, I'd like to get started with your services")} target="_blank" rel="noopener noreferrer">
                   Get Started
                   <Rocket className="ml-2 h-6 w-6" />
                 </a>
@@ -595,7 +587,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               asChild
             >
-              <a href="https://wa.me/919429692670?text=Hello%2C%20I%27d%20like%20to%20start%20my%20project%20with%20Digital%20Thriv" target="_blank" rel="noopener noreferrer">
+              <a href={whatsappUrl("Hello, I'd like to start my project with Digital Thriv")} target="_blank" rel="noopener noreferrer">
                 Start Your Project
                 <Rocket className="ml-2 h-6 w-6" />
               </a>
@@ -608,7 +600,7 @@ export default async function Home() {
                 className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-transparent text-white border-white hover:bg-white/10"
               asChild
             >
-              <a href="https://wa.me/919429692670?text=Hello%2C%20I%27d%20like%20to%20schedule%20a%20call%20to%20discuss%20my%20project" target="_blank" rel="noopener noreferrer">
+              <a href={whatsappUrl("Hello, I'd like to schedule a call to discuss my project")} target="_blank" rel="noopener noreferrer">
                 Schedule a Call
                 <Phone className="ml-2 h-6 w-6" />
               </a>
@@ -630,8 +622,8 @@ export default async function Home() {
                   {APP_CONFIG.contactEmail}
                 </a>{' '}
                 or call{' '}
-                <a href={`tel:${APP_CONFIG.contactPhone}`} className="text-primary underline">
-                  {APP_CONFIG.contactPhone}
+                <a href={contactTelHref()} className="text-primary underline">
+                  {APP_CONFIG.contactPhoneDisplay}
                 </a>
                 .
               </p>
