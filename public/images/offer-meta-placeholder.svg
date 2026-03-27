@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-label="Placeholder for Meta ads offer image">
+  <rect width="800" height="520" fill="#f4f4f5"/>
+  <rect x="48" y="48" width="704" height="424" rx="12" fill="#fafafa" stroke="#d4d4d8" stroke-width="2" stroke-dasharray="10 6"/>
+  <text x="400" y="260" text-anchor="middle" fill="#71717a" font-family="system-ui,sans-serif" font-size="22" font-weight="600">Meta ads visual</text>
+  <text x="400" y="300" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="14">Replace file in /public/images/</text>
+</svg>

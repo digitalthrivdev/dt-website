@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Placeholder for hero image">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e4e4e7"/>
+      <stop offset="100%" style="stop-color:#d4d4d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <rect x="80" y="80" width="1040" height="740" rx="16" fill="#fafafa" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="12 8"/>
+  <text x="600" y="430" text-anchor="middle" fill="#71717a" font-family="system-ui,sans-serif" font-size="28" font-weight="600">Hero image</text>
+  <text x="600" y="480" text-anchor="middle" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="16">Replace with your visual (e.g. store mockup)</text>
+</svg>

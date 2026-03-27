@@ -34,7 +34,7 @@ export default function PoliciesLayout({
                 height={28}
                 className="h-7 w-7 rounded-full"
               />
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-base font-bold text-transparent">
+              <span className="bg-gradient-to-r from-primary to-brand-deep bg-clip-text text-base font-bold text-transparent">
                 {APP_CONFIG.name}
               </span>
             </Link>

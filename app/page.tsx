@@ -1,631 +1,381 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { 
-  BarChart3, 
-  Users, 
+import {
   CheckCircle,
-  ArrowRight,
   Star,
-  TrendingUp,
   Globe,
   Target,
-  Rocket,
   Mail,
-  Phone,
   MapPin,
-  Code,
-  Palette,
   Megaphone,
-  Search,
-  Share2,
-  Camera,
-  DollarSign,
-  Quote
+  Quote,
+  FileCheck,
+  Store,
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ScrollAnimation } from '@/components/scroll-animation';
-import { APP_CONFIG, contactTelHref, whatsappUrl } from '@/lib/constants';
+import { WhatsAppIcon } from '@/components/whatsapp-icon';
+import {
+  APP_CONFIG,
+  HOME_COPY,
+  HOME_STATS,
+  SITE_IMAGES,
+  STATS_DISCLAIMER,
+  TRUST_PARTNER_LOGOS,
+  contactTelHref,
+  whatsappUrl,
+} from '@/lib/constants';
+
+const WHATSAPP_DEFAULT = whatsappUrl("Hi, I'd like to discuss my ecommerce store and Meta ads.");
 
 export default function Home() {
-
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 scroll-smooth">
-      {/* Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <div className="min-h-screen scroll-smooth bg-gradient-to-b from-background to-muted/20">
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
-              <Image 
-                src={APP_CONFIG.logo} 
-                alt="Digital Thriv Logo" 
-                width={32} 
+              <Image
+                src={APP_CONFIG.logo}
+                alt="Digital Thriv Logo"
+                width={32}
                 height={32}
                 className="h-8 w-8 rounded-full"
               />
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-brand-deep bg-clip-text text-xl font-bold text-transparent">
                 {APP_CONFIG.name}
               </span>
-        </div>
-            <div className="flex items-center gap-4">
-              {/* <ThemeToggle /> */}
-          <Link
-            href={`${APP_CONFIG.dashboardUrl}/auth/signin`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button size="lg">Sign In</Button>
-          </Link>
-        </div>
+            </div>
+            <Link
+              href={`${APP_CONFIG.dashboardUrl}/auth/signin`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg">Sign In</Button>
+            </Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-14 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              Web • Branding • Digital Marketing
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div className="order-2 text-center lg:order-1 lg:text-left">
+              <p className="mb-4 text-sm font-medium text-primary">{HOME_COPY.heroEyebrow}</p>
+              <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
+                {HOME_COPY.heroHeadline}
+              </h1>
+              <p className="mb-4 text-lg text-muted-foreground md:text-xl">{HOME_COPY.heroSub}</p>
+              <p className="mb-8 text-sm text-muted-foreground">{HOME_COPY.moatLine}</p>
+              <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
+                <Button
+                  size="lg"
+                  className="h-auto gap-2 px-8 py-5 text-lg text-white shadow-lg transition-all hover:shadow-xl bg-whatsapp hover:bg-whatsapp-hover focus-visible:ring-2 focus-visible:ring-whatsapp/50"
+                  asChild
+                >
+                  <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
+                    <WhatsAppIcon className="size-6 shrink-0" />
+                    Message us on WhatsApp
+                  </a>
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  Prefer email?{' '}
+                  <a
+                    className="font-medium text-primary underline underline-offset-4"
+                    href={`mailto:${APP_CONFIG.contactEmail}`}
+                  >
+                    {APP_CONFIG.contactEmail}
+                  </a>
+                </p>
+              </div>
             </div>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              Build Your Brand.
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                {' '}Accelerate Growth.
-              </span>
-            </h1>
-            <p className="mb-8 text-lg text-muted-foreground md:text-xl max-w-3xl mx-auto">
-              With Digital Thriv — your partner in web, branding & digital marketing solutions that deliver measurable results.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
-                asChild
-              >
-                <a href={whatsappUrl("Hello, interested in your web & marketing services")} target="_blank" rel="noopener noreferrer">
-                  Let&apos;s Talk
-                  <ArrowRight className="ml-2 h-6 w-6" />
-                </a>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
-                asChild
-              >
-                <a href={whatsappUrl("Hello, I'd like to get started with your services")} target="_blank" rel="noopener noreferrer">
-                  Get Started
-                  <Rocket className="ml-2 h-6 w-6" />
-                </a>
-              </Button>
+            <div className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-2xl border bg-muted shadow-sm lg:order-2">
+              <Image
+                src={SITE_IMAGES.hero}
+                alt="Ecommerce store on a device — replace with your image"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Custom digital strategies. Transparent pricing. Real growth.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="border-y bg-muted/40 py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Why Digital Thriv?
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We don&apos;t just deliver projects — we build partnerships that drive real business growth.
-              </p>
-            </div>
-          </ScrollAnimation>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ScrollAnimation delay={100}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Target className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">Tailored Solutions</h3>
-                <p className="text-sm text-muted-foreground">
-                  We don&apos;t believe in one-size-fits-all. Every strategy is customized for your business goals.
-                </p>
+          <p className="mb-6 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            {HOME_COPY.trustTitle}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 px-2">
+            {TRUST_PARTNER_LOGOS.map(({ src, alt }) => (
+              <div
+                key={src}
+                className="relative flex h-10 w-[min(100%,9rem)] shrink-0 items-center justify-center md:h-12 md:w-[10.5rem]"
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  className="object-contain object-center opacity-90 transition-opacity hover:opacity-100"
+                  sizes="(max-width: 768px) 40vw, 168px"
+                />
               </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={200}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">Performance Focused</h3>
-                <p className="text-sm text-muted-foreground">
-                  From click to conversion, every campaign is optimized for maximum ROI.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={300}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Globe className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">End-to-End Service</h3>
-                <p className="text-sm text-muted-foreground">
-                  Web ➝ Branding ➝ Marketing — we provide full-stack digital support.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={400}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <DollarSign className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">Transparent & Affordable</h3>
-                <p className="text-sm text-muted-foreground">
-                  Clear pricing, no hidden costs, packages starting from INR 5,000.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={500}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">Data-Driven Decisions</h3>
-                <p className="text-sm text-muted-foreground">
-                  We rely on analytics and insights, not guesswork.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={600}>
-              <div className="text-center space-y-4 p-6 rounded-lg bg-background border shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
-                <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg">Long-Term Partnership</h3>
-                <p className="text-sm text-muted-foreground">
-                  We see ourselves as an extension of your team.
-                </p>
-              </div>
-            </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20">
+      <section className="py-14 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Our Services
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive digital solutions to elevate your brand and drive growth.
-              </p>
-            </div>
-          </ScrollAnimation>
+          <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">{HOME_COPY.statsTitle}</h2>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {HOME_STATS.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-xl border bg-background px-6 py-8 text-center shadow-sm"
+              >
+                <p className="text-3xl font-bold tracking-tight text-primary md:text-4xl">{s.value}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-muted-foreground">{STATS_DISCLAIMER}</p>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Service Cards */}
-            <ScrollAnimation delay={100}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
+      <section className="bg-muted/50 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.offersTitle}</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.offersIntro}</p>
+          </div>
+          <div className="grid gap-10 lg:grid-cols-2">
+            <Card className="overflow-hidden border-2">
+              <div className="relative aspect-[16/10] w-full bg-muted">
+                <Image
+                  src={SITE_IMAGES.offerEcommerce}
+                  alt="Premium ecommerce website — replace with your image"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <CardHeader>
-                <Code className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Web Development & Design</CardTitle>
-                <CardDescription>
-                  Responsive, SEO-optimized websites engineered for performance, speed & usability.
-                </CardDescription>
+                <div className="mb-2 flex items-center gap-2">
+                  <Store className="h-8 w-8 text-primary" />
+                  <CardTitle className="text-xl">{HOME_COPY.offerEcommerce.title}</CardTitle>
+                </div>
+                <CardDescription className="text-base">{HOME_COPY.offerEcommerce.description}</CardDescription>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                    Mobile-responsive design
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                    SEO optimization
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                    Fast loading speeds
-                  </li>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {HOME_COPY.offerEcommerce.bullets.map((line) => (
+                    <li key={line} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      {line}
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={200}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
-                <CardHeader>
-                  <Palette className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Brand Strategy & Identity</CardTitle>
-                  <CardDescription>
-                    Logo design, brand guidelines, positioning, and messaging to create a consistent identity.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Logo design & branding
+            </Card>
+            <Card className="overflow-hidden border-2">
+              <div className="relative aspect-[16/10] w-full bg-muted">
+                <Image
+                  src={SITE_IMAGES.offerMeta}
+                  alt="Meta ads for ecommerce — replace with your image"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <CardHeader>
+                <div className="mb-2 flex items-center gap-2">
+                  <Megaphone className="h-8 w-8 text-primary" />
+                  <CardTitle className="text-xl">{HOME_COPY.offerMeta.title}</CardTitle>
+                </div>
+                <CardDescription className="text-base">{HOME_COPY.offerMeta.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {HOME_COPY.offerMeta.bullets.map((line) => (
+                    <li key={line} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      {line}
                     </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Brand guidelines
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Consistent messaging
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={300}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
-                <CardHeader>
-                  <Megaphone className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Digital Marketing & Advertising</CardTitle>
-                  <CardDescription>
-                    Paid campaigns (SEM, social ads), content marketing, email marketing — designed to convert.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Paid advertising campaigns
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Content marketing
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Email marketing
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={400}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
-                <CardHeader>
-                  <Search className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>SEO & Content Optimization</CardTitle>
-                  <CardDescription>
-                    Technical SEO, on-page & off-page, content strategy — to boost organic reach.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Technical SEO
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Content strategy
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Organic reach boost
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={500}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
-                <CardHeader>
-                  <Share2 className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Social Media Management</CardTitle>
-                  <CardDescription>
-                    Strategy, design, posting, engagement — maintain a strong brand presence where your audience is.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Social media strategy
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Content creation
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Community engagement
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={600}>
-              <Card className="border-2 hover:border-primary/50 hover:-translate-y-2 transition-all duration-300">
-                <CardHeader>
-                  <Camera className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Media & Advertising</CardTitle>
-                  <CardDescription>
-                    Campaign planning, ad creatives, channel mix — for effective brand reach and awareness.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Campaign planning
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Ad creatives
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                      Channel optimization
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Our Workflow in 4 Steps
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                A proven process that delivers results every time.
-              </p>
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.whyTitle}</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.whyIntro}</p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <Target className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-semibold">{HOME_COPY.whyCards[0].title}</h3>
+              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[0].body}</p>
             </div>
-          </ScrollAnimation>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ScrollAnimation delay={100}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform duration-300">
-                  1
-                </div>
-                <h3 className="font-semibold text-lg">Discovery & Planning</h3>
-                <p className="text-sm text-muted-foreground">
-                  We begin by understanding your goals, audience, and competitive landscape.
-                </p>
+            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <FileCheck className="h-6 w-6 text-primary" />
               </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={200}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform duration-300">
-                  2
-                </div>
-                <h3 className="font-semibold text-lg">Design & Strategy</h3>
-                <p className="text-sm text-muted-foreground">
-                  Branding, wireframes, and campaign strategy take shape.
-                </p>
+              <h3 className="font-semibold">{HOME_COPY.whyCards[1].title}</h3>
+              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[1].body}</p>
+            </div>
+            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <Globe className="h-6 w-6 text-primary" />
               </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={300}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform duration-300">
-                  3
-                </div>
-                <h3 className="font-semibold text-lg">Build & Execute</h3>
-                <p className="text-sm text-muted-foreground">
-                  We develop your site, launch campaigns, create content, and optimize.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={400}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform duration-300">
-                  4
-                </div>
-                <h3 className="font-semibold text-lg">Monitor & Grow</h3>
-                <p className="text-sm text-muted-foreground">
-                  Continuous testing, analytics, refinement, reporting, and scaling.
-                </p>
-              </div>
-            </ScrollAnimation>
+              <h3 className="font-semibold">{HOME_COPY.whyCards[2].title}</h3>
+              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[2].body}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20">
+      <section className="border-y bg-muted/40 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                What Our Clients Say
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Real feedback from businesses we&apos;ve helped grow.
-              </p>
-            </div>
-          </ScrollAnimation>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ScrollAnimation delay={100}>
-              <Card className="border-2 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
+          <div className="mb-10 text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.alsoHelpTitle}</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.alsoHelpIntro}</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {HOME_COPY.alsoHelpItems.map((item) => (
+              <Card key={item.title} className="border bg-background">
+                <CardHeader>
+                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                  <CardDescription>{item.text}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="mb-10 text-center text-2xl font-semibold md:text-3xl">How we work</h3>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {HOME_COPY.processSteps.map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  {item.step}
+                </div>
+                <p className="font-semibold">{item.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/50 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">Client feedback</h2>
+            <p className="text-muted-foreground">{HOME_COPY.clientFeedbackIntro}</p>
+          </div>
+          <div className="mx-auto max-w-2xl">
+            <Card className="border-2">
+              <CardContent className="p-8">
+                <div className="mb-4 flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <Quote className="h-8 w-8 text-primary/20 mb-4" />
-                <p className="text-sm text-muted-foreground mb-4">
-                  &quot;Working with Digital Thriv transformed our online presence. Their team revamped our website, improved our SEO, and our traffic doubled in just 3 months.&quot;
-                </p>
-                <div className="font-semibold">Aarav Mehta</div>
-                <div className="text-sm text-muted-foreground">Founder of FitFuel India</div>
+                <Quote className="mb-4 h-8 w-8 text-primary/25" aria-hidden />
+                <p className="mb-6 text-muted-foreground">&quot;{HOME_COPY.testimonialBody}&quot;</p>
+                <div className="font-semibold">{HOME_COPY.testimonialName}</div>
+                <div className="text-sm text-muted-foreground">{HOME_COPY.testimonialRole}</div>
               </CardContent>
-              </Card>
-            </ScrollAnimation>
-            <ScrollAnimation delay={200}>
-              <Card className="border-2 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-primary/20 mb-4" />
-                <p className="text-sm text-muted-foreground mb-4">
-                  &quot;Digital Thriv&apos;s social media strategy helped us go viral. We saw a 300% increase in engagement and conversions from Instagram and Facebook.&quot;
-                </p>
-                <div className="font-semibold">Sneha Kapoor</div>
-                <div className="text-sm text-muted-foreground">CEO of GlowAura Skincare</div>
-              </CardContent>
-              </Card>
-            </ScrollAnimation>
-            <ScrollAnimation delay={300}>
-              <Card className="border-2 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-primary/20 mb-4" />
-                <p className="text-sm text-muted-foreground mb-4">
-                  &quot;The team at Digital Thriv understands startups. They built us a stunning website, handled our launch campaign, and provided ongoing support that feels like an extension of our own team.&quot;
-                </p>
-                <div className="font-semibold">Rohit Verma</div>
-                <div className="text-sm text-muted-foreground">Co-Founder of LearnLoop EdTech</div>
-              </CardContent>
-              </Card>
-            </ScrollAnimation>
+            </Card>
           </div>
         </div>
       </section>
 
-
-      {/* Contact Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Let&apos;s Get Started
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Tell us your vision and we&apos;ll make it real. No fluff, just results.
-              </p>
-            </div>
-          </ScrollAnimation>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Get in Touch</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <ScrollAnimation delay={200}>
-                    <div className="flex flex-col items-center space-y-2 p-6 rounded-lg bg-background border hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-                    <Mail className="h-8 w-8 text-primary" />
-                    <span className="font-medium">Email</span>
-                    <span className="text-sm text-muted-foreground">Sales@digitalthriv.com</span>
-                    </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation delay={300}>
-                    <div className="flex flex-col items-center space-y-2 p-6 rounded-lg bg-background border hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-                    <Phone className="h-8 w-8 text-primary" />
-                    <span className="font-medium">Whatsapp</span>
-                    <span className="text-sm text-muted-foreground">6390246088</span>
-                    </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation delay={400}>
-                    <div className="flex flex-col items-center space-y-2 p-6 rounded-lg bg-background border hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-                    <MapPin className="h-8 w-8 text-primary" />
-                    <span className="font-medium">Location</span>
-                    <span className="text-sm text-muted-foreground">Banda (210001), UP, India</span>
-                    </div>
-                  </ScrollAnimation>
-                </div>
-              </div>
-              <ScrollAnimation delay={500}>
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">Quick Response</h3>
-                  <p className="text-muted-foreground max-w-2xl mx-auto">
-                    We typically respond to all inquiries within 24 hours. For urgent projects, 
-                    feel free to call us directly or reach out via WhatsApp.
-                  </p>
-                </div>
-              </ScrollAnimation>
-            </div>
+          <div className="mb-10 text-center">
+            <h2 className="mb-3 text-3xl font-bold md:text-4xl">Contact</h2>
+            <p className="mx-auto max-w-xl text-muted-foreground">{HOME_COPY.contactIntro}</p>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-blue-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Transform Your Digital Presence?
-            </h2>
-          </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Join businesses that trust Digital Thriv for their digital growth
-            </p>
-          </ScrollAnimation>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ScrollAnimation delay={200}>
-              <Button 
-                size="lg" 
-                variant="secondary" 
-                className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              asChild
-            >
-              <a href={whatsappUrl("Hello, I'd like to start my project with Digital Thriv")} target="_blank" rel="noopener noreferrer">
-                Start Your Project
-                <Rocket className="ml-2 h-6 w-6" />
+          <div className="mx-auto flex max-w-4xl flex-col flex-wrap items-center justify-center gap-6 rounded-xl border bg-background px-6 py-8 text-center text-sm sm:flex-row sm:gap-10 md:text-left">
+            <div className="flex flex-col items-center gap-1 sm:items-start">
+              <span className="flex items-center gap-2 font-medium text-foreground">
+                <Mail className="h-4 w-4 text-primary" aria-hidden />
+                Email
+              </span>
+              <a href={`mailto:${APP_CONFIG.contactEmail}`} className="text-primary underline underline-offset-4">
+                {APP_CONFIG.contactEmail}
               </a>
-              </Button>
-            </ScrollAnimation>
-            <ScrollAnimation delay={300}>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full sm:w-auto text-xl px-12 py-6 h-auto shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-transparent text-white border-white hover:bg-white/10"
-              asChild
-            >
-              <a href={whatsappUrl("Hello, I'd like to schedule a call to discuss my project")} target="_blank" rel="noopener noreferrer">
-                Schedule a Call
-                <Phone className="ml-2 h-6 w-6" />
+            </div>
+            <div className="flex flex-col items-center gap-1 sm:items-start">
+              <span className="flex items-center gap-2 font-medium text-foreground">
+                <WhatsAppIcon className="size-4 shrink-0 text-whatsapp" aria-hidden />
+                WhatsApp / phone
+              </span>
+              <a
+                href={WHATSAPP_DEFAULT}
+                className="font-medium text-whatsapp underline underline-offset-4 hover:text-whatsapp-hover"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {APP_CONFIG.contactPhoneDisplay}
               </a>
-              </Button>
-            </ScrollAnimation>
+            </div>
+            <div className="flex flex-col items-center gap-1 sm:items-start">
+              <span className="flex items-center gap-2 font-medium text-foreground">
+                <MapPin className="h-4 w-4 text-primary" aria-hidden />
+                Location
+              </span>
+              <span className="max-w-xs text-muted-foreground">{APP_CONFIG.contactAddress}</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-muted/50 border-t">
+      <section className="bg-gradient-to-r from-primary to-brand-deep py-16 md:py-20">
+        <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">{HOME_COPY.ctaTitle}</h2>
+          <p className="mx-auto mb-8 max-w-xl text-lg text-primary-foreground/90">{HOME_COPY.ctaSub}</p>
+          <Button
+            size="lg"
+            className="h-auto gap-2 px-10 py-5 text-lg text-white shadow-lg bg-whatsapp hover:bg-whatsapp-hover focus-visible:ring-2 focus-visible:ring-white/40"
+            asChild
+          >
+            <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon className="size-6 shrink-0" />
+              Open WhatsApp
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      <footer className="border-t bg-muted/50 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-sm text-muted-foreground">
+          <div className="grid gap-6 text-sm text-muted-foreground md:grid-cols-2 lg:grid-cols-3">
             <div className="space-y-2">
               <p className="text-base font-semibold text-foreground">Need support?</p>
               <p>
-                Email us at{' '}
+                Email{' '}
                 <a href={`mailto:${APP_CONFIG.contactEmail}`} className="text-primary underline">
                   {APP_CONFIG.contactEmail}
-                </a>{' '}
-                or call{' '}
+                </a>
+                {' · '}
                 <a href={contactTelHref()} className="text-primary underline">
                   {APP_CONFIG.contactPhoneDisplay}
                 </a>
-                .
               </p>
             </div>
             <div className="space-y-2">
@@ -650,11 +400,11 @@ export default function Home() {
             </div>
             <div className="space-y-2">
               <p className="text-base font-semibold text-foreground">Visit us</p>
-              <p>Banda (210001), UP, India</p>
+              <p>{APP_CONFIG.contactAddress}</p>
             </div>
           </div>
-          <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Digital Thriv. All rights reserved.</p>
+          <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} Digital Thriv. All rights reserved.</p>
           </div>
         </div>
       </footer>

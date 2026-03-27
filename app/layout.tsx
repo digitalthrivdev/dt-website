@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(APP_CONFIG.websiteUrl),
   title: {
-    default: `${APP_CONFIG.name} | Web, Branding & Digital Marketing`,
+    default: `${APP_CONFIG.name} | Ecommerce & Meta Ads`,
     template: `%s | ${APP_CONFIG.name}`,
   },
   description: APP_CONFIG.description,
