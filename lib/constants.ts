@@ -8,7 +8,7 @@ export const APP_CONFIG = {
   /** ISO-style label shown on legal pages */
   policyEffectiveDate: 'November 8, 2025',
   whatsappCountryCode: '91',
-  whatsappNumber: '6390246088',
+  whatsappNumber: '6390309463',
   contactEmail: 'Support@digitalthriv.com',
   /** E.164 for tel: links (international dialers) */
   contactPhoneE164: '+916390246088',
