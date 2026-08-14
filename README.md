@@ -18,7 +18,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## SEO environment variables
+
+The site supports Google Search Console verification and Google Analytics without hard-coding account identifiers. Configure these variables in the deployment environment when the real values are available:
+
+```bash
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_google_verification_token
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Search Console can alternatively be verified with a DNS record. After deployment, submit `https://www.digitalthriv.com/sitemap.xml` and request indexing for the commercial landing pages.
 
 ## Learn More
 

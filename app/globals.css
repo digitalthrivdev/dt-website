@@ -2,6 +2,14 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@font-face {
+  font-family: "Sora Variable";
+  src: url("/fonts/sora-latin-variable.woff2") format("woff2-variations");
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -12,8 +20,8 @@
   --color-whatsapp-hover: var(--whatsapp-hover);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Segoe UI Variable", "Avenir Next", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -136,5 +144,170 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01" 1, "cv11" 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--brand) 9%, transparent) 0, transparent 28rem),
+    radial-gradient(circle at 95% 18%, color-mix(in srgb, var(--brand) 6%, transparent) 0, transparent 32rem);
+}
+
+.display-font {
+  font-family: "Segoe UI Variable Display", "Avenir Next", Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.brand-wordmark {
+  font-family: "Sora Variable", "Sora", "Segoe UI Variable Display", ui-sans-serif, system-ui, sans-serif;
+  font-variation-settings: "wght" 630;
+  font-weight: 630;
+  letter-spacing: -0.06em;
+}
+
+.brand-wordmark-accent {
+  font-variation-settings: "wght" 760;
+  font-weight: 760;
+}
+
+#policy-content > header {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  background: color-mix(in srgb, white 80%, transparent);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: 0 30px 80px -55px color-mix(in srgb, var(--brand-deep) 55%, transparent);
+}
+
+#policy-content > header h1 {
+  font-family: "Segoe UI Variable Display", "Avenir Next", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+#policy-content > header p:last-child {
+  max-width: 46rem;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+#policy-content > section {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 6vw, 5rem);
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+#policy-content > section > h2 {
+  grid-column: 1;
+  grid-row: 1 / span 20;
+  font-family: "Segoe UI Variable Display", "Avenir Next", Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+#policy-content > section > :not(h2) {
+  grid-column: 2;
+}
+
+#policy-content ul {
+  list-style: disc;
+  padding-left: 1.15rem;
+}
+
+.glass-panel {
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, white 82%);
+  background: color-mix(in srgb, white 82%, transparent);
+  box-shadow: 0 24px 70px -38px color-mix(in srgb, var(--brand-deep) 48%, transparent);
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+}
+
+.glass-dark {
+  border: 1px solid rgb(255 255 255 / 0.13);
+  background: rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.11), 0 30px 80px -44px rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+.container,
+.section-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3.2vw, 3.5rem);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes testimonial-accent {
+  from {
+    opacity: 0;
+    transform: translateY(7px) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes testimonial-sheen {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(110%); }
+}
+
+.testimonial-panel {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.testimonial-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand) 55%, white), transparent);
+  animation: testimonial-sheen 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.testimonial-quote,
+.testimonial-star {
+  animation: testimonial-accent 580ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .section-shell {
+    padding-inline: 1rem;
+  }
+
+  .glass-panel, .glass-dark {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  #policy-content > section {
+    display: block;
+  }
+
+  #policy-content > section > h2 {
+    margin-bottom: 1rem;
   }
 }

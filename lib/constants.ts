@@ -1,10 +1,10 @@
 export const APP_CONFIG = {
-  name: 'DIGITAL THRIV',
+  name: 'Digital Thriv',
   dashboardUrl: 'https://dashboard.digitalthriv.com',
-  websiteUrl: 'https://digitalthriv.com',
+  websiteUrl: 'https://www.digitalthriv.com',
   logo: 'https://ik.imagekit.io/digitalthriv/digital-thriv/dt-logo.png',
   description:
-    'Digital Thriv helps ecommerce brands in India grow with premium online stores and Meta (Facebook & Instagram) ads. Fast replies on WhatsApp. Based in Banda, Uttar Pradesh; remote projects welcome.',
+    'Launch a dropshipping store from ₹2,999, a customized D2C website from ₹4,999, or a website and Android app package from ₹9,999.',
   /** ISO-style label shown on legal pages */
   policyEffectiveDate: 'November 8, 2025',
   whatsappCountryCode: '91',
@@ -29,7 +29,7 @@ export function contactTelHref(): string {
 
 /** Swap files under /public/images/ without changing code paths */
 export const SITE_IMAGES = {
-  hero: '/images/hero-website.png',
+  hero: '/images/hero-premium-v2.png',
   // hero: '/images/hero-placeholder.svg',
   offerEcommerce: '/images/offer-ecommerce.jpg',
   offerMeta: '/images/offer-meta.jpg',
@@ -40,8 +40,8 @@ export const TRUST_PARTNER_LOGOS = [
   { src: '/logos/meta.png', alt: 'Meta' },
   { src: '/logos/shopify-logo.svg', alt: 'Shopify Partner' },
   { src: '/logos/cashfree-logo.png', alt: 'Cashfree' },
-  { src: '/logos/dropdash-logo.png', alt: 'Dropdash' },
-  { src: '/logos/Roposo_logo.webp', alt: 'Roposo' },
+  { src: '/logos/checkout.webp', alt: 'fastrr' },
+  { src: '/logos/Shiprocket-logo.svg', alt: 'Shiprocket' },
   { src: '/logos/fship-logo.png', alt: 'Fship' },
 ] as const;
 

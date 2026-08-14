@@ -1,413 +1,109 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import type { Metadata } from 'next';
 import Image from 'next/image';
-import {
-  CheckCircle,
-  Star,
-  Globe,
-  Target,
-  Mail,
-  MapPin,
-  Megaphone,
-  Quote,
-  FileCheck,
-  Store,
-} from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { WhatsAppIcon } from '@/components/whatsapp-icon';
-import {
-  APP_CONFIG,
-  HOME_COPY,
-  HOME_STATS,
-  SITE_IMAGES,
-  STATS_DISCLAIMER,
-  TRUST_PARTNER_LOGOS,
-  contactTelHref,
-  whatsappUrl,
-} from '@/lib/constants';
+import Link from 'next/link';
+import { BadgeCheck, BarChart3, Check, ChevronRight, MessageCircle, Palette, Rocket, Smartphone, Sparkles, Store, Target, TrendingUp, X } from 'lucide-react';
+import { PackageRecommender } from '@/components/conversion-system';
+import { CommerceFlow } from '@/components/premium-visuals';
+import { JsonLd, SiteFooter, SiteHeader } from '@/components/site-shell';
+import { ReviewShowcase } from '@/components/review-showcase';
+import { APP_CONFIG, TRUST_PARTNER_LOGOS, whatsappUrl } from '@/lib/constants';
+import { faqSchema, faqs } from '@/lib/seo-content';
+import reviews from '@/lib/reviews.json';
 
-const WHATSAPP_DEFAULT = whatsappUrl("Hi, I'd like to discuss my ecommerce store and Meta ads.");
+export const metadata: Metadata = {
+  title: { absolute: 'E-commerce Website Development From ₹2,999 | Digital Thriv' },
+  description: 'Build, improve or grow your ecommerce store. Shopify from ₹2,999, customized D2C websites from ₹4,999, and website plus Android app from ₹9,999.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'E-commerce Website Development From ₹2,999 | Digital Thriv',
+    description: 'Shopify, customized D2C websites and Android ecommerce apps with catalog, payments, logistics and Meta integrations.',
+    url: '/',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'E-commerce Website Development From ₹2,999 | Digital Thriv',
+    description: 'Shopify, customized D2C websites and Android ecommerce apps with catalog, payments, logistics and Meta integrations.',
+  },
+};
+
+const stats = [
+  { value: '2,000+', label: 'Ecommerce stores built', icon: Store },
+  { value: '₹10 Cr+', label: 'Ad spend managed', icon: Target },
+  { value: '₹200 Cr+', label: 'Client revenue supported', icon: TrendingUp },
+  { value: '11+ years', label: 'Ecommerce experience', icon: BadgeCheck },
+] as const;
+
+const intentCards = [
+  { icon: Rocket, eyebrow:'START FAST', title:'Start a Dropshipping Store', description:'Get a professionally configured, template-based Shopify store with your catalog and essential integrations.', price:'₹2,999', cta:'Launch my store', href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to start a dropshipping store with the ₹2,999 Shopify package.' },
+  { icon: Palette, eyebrow:'BUILD YOUR BRAND', title:'Build a D2C Store', description:'Create a more customized Shopify or WooCommerce storefront with premium graphics and conversion-focused sections.', price:'₹4,999', cta:'Build my D2C store', href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want to build a customized D2C store with the ₹4,999 package.' },
+  { icon: Smartphone, eyebrow:'WEB + MOBILE', title:'Launch a Website + App', description:'Sell through a connected ecommerce website and Android shopping app with your catalog and core integrations.', price:'₹9,999', cta:'Get website + app', href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want the ₹9,999 ecommerce website and Android app package.' },
+  { icon: BarChart3, eyebrow:'IMPROVE PERFORMANCE', title:'Grow an Existing Store', description:'Improve presentation, conversion, tracking or customer acquisition for an ecommerce store already online.', price:'Custom scope', cta:'Review my store', href:'/ecommerce-growth-conversion-optimization', prompt:'Hi Digital Thriv, I already have an ecommerce store and want help improving its conversion or growth.' },
+] as const;
+
+const plans = [
+  { name:'Dropshipping Shopify', price:'₹2,999', audience:'For product testers and beginners', summary:'Launch fast with a polished, template-based Shopify store.', features:[['Premium Shopify theme',true],['Dropshipping supplier integration',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Essential trust elements',true],['Premium custom graphics',false],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to launch the ₹2,999 Shopify dropshipping store.' },
+  { name:'Customized D2C', price:'₹4,999', audience:'For D2C and ecommerce brands', summary:'Build a more distinctive storefront around your products and brand.', features:[['Higher theme customization',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want the ₹4,999 customized D2C package.' },
+  { name:'Website + Android App', price:'₹9,999', audience:'For mobile-first D2C brands', summary:'Create a connected website and Android commerce experience.', features:[['Customized ecommerce website',true],['Android shopping app',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true]] as const, href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want the ₹9,999 website and Android app package.' },
+] as const;
+
+const homepageFaqs = [
+  { q:'What does E-commerce website development cost in India?', a:'Digital Thriv packages start at ₹2,999 for a template-based Shopify dropshipping store, ₹4,999 for a more customized D2C storefront, and ₹9,999 for an ecommerce website with an Android shopping app. The final E-commerce website development cost depends on catalog size, platform, third-party apps, custom development and the written scope.' },
+  { q:'Which ecommerce package is right for me?', a:'Choose the ₹2,999 Shopify package if you are testing products and want a fast template-based launch. Choose the ₹4,999 package if you are building a longer-term D2C brand and need higher customization. Choose ₹9,999 when you need both an ecommerce website and Android shopping app.' },
+  { q:'Why is Digital Thriv more affordable than traditional agencies?', a:'We use defined package scopes, repeatable ecommerce workflows and proven platform components. This reduces agency overhead while preserving the catalog, payment, logistics and marketing integrations needed to launch.' },
+  { q:'What does template-based mean?', a:'The ₹2,999 package uses an established premium Shopify theme structure adapted with your products, brand colors and content. Extensive layout changes, custom-coded sections and advanced custom graphics are outside that base package.' },
+  { q:'What are conversion boosters?', a:'Depending on the package, conversion boosters can include trust indicators, promotional banners, stronger calls to action, product benefits, reassurance content, offer displays and cross-sell elements supported by the platform.' },
+  ...faqs,
+];
+
+function WhatsAppLink({ prompt, children, className='' }: { prompt:string; children:React.ReactNode; className?:string }) {
+  return <a href={whatsappUrl(prompt)} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>;
+}
 
 export default function Home() {
-  return (
-    <div className="min-h-screen scroll-smooth bg-gradient-to-b from-background to-muted/20">
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Image
-                src={APP_CONFIG.logo}
-                alt="Digital Thriv Logo"
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-full"
-              />
-              <span className="bg-gradient-to-r from-primary to-brand-deep bg-clip-text text-xl font-bold text-transparent">
-                {APP_CONFIG.name}
-              </span>
-            </div>
-            <Link
-              href={`${APP_CONFIG.dashboardUrl}/auth/signin`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg">Sign In</Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+  const organization = { '@context':'https://schema.org', '@type':'ProfessionalService', name:'Digital Thriv', url:APP_CONFIG.websiteUrl, logo:APP_CONFIG.logo, email:APP_CONFIG.contactEmail, telephone:APP_CONFIG.contactPhoneE164, priceRange:'₹2,999–₹9,999+', contactPoint:{ '@type':'ContactPoint', telephone:APP_CONFIG.contactPhoneE164, contactType:'sales', areaServed:'IN', availableLanguage:['English','Hindi'] }, address:{ '@type':'PostalAddress', addressLocality:'Banda', addressRegion:'Uttar Pradesh', postalCode:'208025', addressCountry:'IN' }, areaServed:'IN' };
+  return <div className="min-h-screen pb-20 md:pb-0"><JsonLd data={organization}/><JsonLd data={faqSchema(homepageFaqs)}/><SiteHeader/><main>
 
-      <section className="py-14 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="order-2 text-center lg:order-1 lg:text-left">
-              <p className="mb-4 text-sm font-medium text-primary">{HOME_COPY.heroEyebrow}</p>
-              <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
-                {HOME_COPY.heroHeadline}
-              </h1>
-              <p className="mb-4 text-lg text-muted-foreground md:text-xl">{HOME_COPY.heroSub}</p>
-              <p className="mb-8 text-sm text-muted-foreground">{HOME_COPY.moatLine}</p>
-              <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
-                <Button
-                  size="lg"
-                  className="h-auto gap-2 px-8 py-5 text-lg text-white shadow-lg transition-all hover:shadow-xl bg-whatsapp hover:bg-whatsapp-hover focus-visible:ring-2 focus-visible:ring-whatsapp/50"
-                  asChild
-                >
-                  <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
-                    <WhatsAppIcon className="size-6 shrink-0" />
-                    Message us on WhatsApp
-                  </a>
-                </Button>
-                <p className="text-sm text-muted-foreground">
-                  Prefer email?{' '}
-                  <a
-                    className="font-medium text-primary underline underline-offset-4"
-                    href={`mailto:${APP_CONFIG.contactEmail}`}
-                  >
-                    {APP_CONFIG.contactEmail}
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-2xl border bg-muted shadow-sm lg:order-2">
-              <Image
-                src={SITE_IMAGES.hero}
-                alt="Ecommerce store on a device — replace with your image"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
+    <section className="relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24 lg:pt-20">
+      <div className="absolute left-1/2 top-0 -z-10 h-[36rem] w-[72rem] -translate-x-1/2 rounded-full bg-primary/[.07] blur-3xl"/>
+      <div className="section-shell grid items-center gap-10 lg:grid-cols-[1.02fr_.98fr] lg:gap-14">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/[.06] px-3 py-1.5 text-xs font-bold uppercase tracking-[.14em] text-primary"><Sparkles className="size-3.5"/>Ecommerce websites, apps and growth</div>
+          <h1 className="display-font text-balance mt-6 text-[2.65rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.35rem]">Build, improve or grow your <span className="text-primary">ecommerce store.</span></h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">From a Shopify launch at ₹2,999 to a customized D2C store or Android shopping app—get the technology, integrations and guidance required to start selling.</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <WhatsAppLink prompt="Hi Digital Thriv, I want help choosing the right ecommerce package for my business." className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 font-bold text-white shadow-lg shadow-whatsapp/20 transition hover:-translate-y-0.5 hover:bg-whatsapp-hover"><MessageCircle className="size-5"/>Discuss your ecommerce store</WhatsAppLink>
+            <a href="#compare" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-primary/20 bg-white/75 px-6 font-bold text-foreground transition hover:border-primary/45 hover:bg-white">Compare packages<ChevronRight className="size-4 text-primary"/></a>
           </div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-muted-foreground"><span>Shopify ₹2,999</span><span className="text-primary/35">•</span><span>D2C ₹4,999</span><span className="text-primary/35">•</span><span>Website + App ₹9,999</span></div>
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground"><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>Written scope</span><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>Business-owned account</span><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>No mystery add-ons</span></div>
         </div>
-      </section>
+        <div className="relative mx-auto aspect-[4/3] w-full max-w-[640px] overflow-hidden rounded-[2rem] border border-primary/15 bg-[#171126] shadow-[0_40px_100px_-40px_rgba(79,58,158,.72)]">
+          <Image src="/images/hero-premium-v2.png" alt="Premium ecommerce storefront and Android shopping app" fill priority className="object-cover" sizes="(max-width: 1024px) 100vw, 46vw"/>
+          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10"/>
+        </div>
+      </div>
+    </section>
 
-      <section className="border-y bg-muted/40 py-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="mb-6 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {HOME_COPY.trustTitle}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 px-2">
-            {TRUST_PARTNER_LOGOS.map(({ src, alt }) => (
-              <div
-                key={src}
-                className="relative flex h-10 w-[min(100%,9rem)] shrink-0 items-center justify-center md:h-12 md:w-[10.5rem]"
-              >
-                <Image
-                  src={src}
-                  alt={alt}
-                  fill
-                  className="object-contain object-center opacity-90 transition-opacity hover:opacity-100"
-                  sizes="(max-width: 768px) 40vw, 168px"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section aria-label="Ecommerce technology integrations" className="border-y border-border/60 py-9 sm:py-11"><div className="section-shell"><div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-9 gap-y-7 sm:gap-x-12 lg:justify-between">{TRUST_PARTNER_LOGOS.map(({src,alt})=><div key={src} className="group relative h-9 w-24 sm:h-10 sm:w-28 lg:w-32"><Image src={src} alt={alt} fill sizes="128px" className="object-contain opacity-60 grayscale transition duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"/></div>)}</div></div></section>
 
-      <section className="py-14 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">{HOME_COPY.statsTitle}</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {HOME_STATS.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-xl border bg-background px-6 py-8 text-center shadow-sm"
-              >
-                <p className="text-3xl font-bold tracking-tight text-primary md:text-4xl">{s.value}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-muted-foreground">{STATS_DISCLAIMER}</p>
-        </div>
-      </section>
+    <section aria-label="Digital Thriv results" className="section-shell py-12 sm:py-14"><div className="overflow-hidden rounded-[1.75rem] bg-[#211832] px-5 py-7 text-white shadow-2xl shadow-primary/15 sm:px-8"><div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">{stats.map(({value,label,icon:Icon},i)=><div key={label} className={`relative px-2 sm:px-5 ${i%2===1?'border-l border-white/10':''} ${i>0?'sm:border-l sm:border-white/10':''}`}><Icon className="mb-3 size-4 text-[#bcaaf2]"/><p className="display-font text-3xl font-bold sm:text-4xl">{value}</p><p className="mt-1 text-xs leading-5 text-white/55 sm:text-sm">{label}</p></div>)}</div><p className="mt-6 border-t border-white/10 pt-4 text-[11px] leading-5 text-white/40">Cumulative operational figures across supported ecommerce work and managed campaigns. Client outcomes vary by product, market and investment.</p></div></section>
 
-      <section className="bg-muted/50 py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.offersTitle}</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.offersIntro}</p>
-          </div>
-          <div className="grid gap-10 lg:grid-cols-2">
-            <Card className="overflow-hidden border-2">
-              <div className="relative aspect-[16/10] w-full bg-muted">
-                <Image
-                  src={SITE_IMAGES.offerEcommerce}
-                  alt="Premium ecommerce website — replace with your image"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <CardHeader>
-                <div className="mb-2 flex items-center gap-2">
-                  <Store className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-xl">{HOME_COPY.offerEcommerce.title}</CardTitle>
-                </div>
-                <CardDescription className="text-base">{HOME_COPY.offerEcommerce.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {HOME_COPY.offerEcommerce.bullets.map((line) => (
-                    <li key={line} className="flex items-start gap-2">
-                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden border-2">
-              <div className="relative aspect-[16/10] w-full bg-muted">
-                <Image
-                  src={SITE_IMAGES.offerMeta}
-                  alt="Meta ads for ecommerce — replace with your image"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <CardHeader>
-                <div className="mb-2 flex items-center gap-2">
-                  <Megaphone className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-xl">{HOME_COPY.offerMeta.title}</CardTitle>
-                </div>
-                <CardDescription className="text-base">{HOME_COPY.offerMeta.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {HOME_COPY.offerMeta.bullets.map((line) => (
-                    <li key={line} className="flex items-start gap-2">
-                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    <section id="intent" className="scroll-mt-24 py-20 lg:py-28"><div className="section-shell"><div className="max-w-3xl"><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">Start from your goal</p><h2 className="display-font text-balance mt-3 text-4xl font-bold sm:text-5xl">What are you trying to do?</h2><p className="mt-4 text-lg leading-8 text-muted-foreground">You do not need to understand every platform first. Choose the business outcome that describes where you are now.</p></div><div className="mt-12 grid gap-5 md:grid-cols-2">{intentCards.map(({icon:Icon,...item},i)=><article key={item.title} className={`group relative overflow-hidden rounded-[1.75rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8 ${i===1?'border-primary/35 bg-primary/[.055]':'bg-background/78'}`}><div className="absolute -right-16 -top-16 size-44 rounded-full bg-primary/[.07] blur-2xl"/><div className="relative"><div className="flex items-start justify-between gap-4"><div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"><Icon className="size-5"/></div><span className="rounded-full bg-muted px-3 py-1 text-xs font-bold">{item.price}</span></div><p className="mt-7 text-xs font-bold tracking-[.14em] text-primary">{item.eyebrow}</p><h3 className="display-font mt-2 text-2xl font-bold sm:text-3xl">{item.title}</h3><p className="mt-3 max-w-xl leading-7 text-muted-foreground">{item.description}</p><div className="mt-7 flex flex-wrap items-center gap-4"><WhatsAppLink prompt={item.prompt} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-whatsapp px-4 text-sm font-bold text-white transition hover:bg-whatsapp-hover"><MessageCircle className="size-4"/>{item.cta}</WhatsAppLink><Link href={item.href} className="inline-flex items-center gap-1 text-sm font-bold text-primary">View details<ChevronRight className="size-4"/></Link></div></div></article>)}</div></div></section>
 
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.whyTitle}</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.whyIntro}</p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Target className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="font-semibold">{HOME_COPY.whyCards[0].title}</h3>
-              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[0].body}</p>
-            </div>
-            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <FileCheck className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="font-semibold">{HOME_COPY.whyCards[1].title}</h3>
-              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[1].body}</p>
-            </div>
-            <div className="space-y-3 rounded-lg border bg-background p-6 text-center shadow-sm">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Globe className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="font-semibold">{HOME_COPY.whyCards[2].title}</h3>
-              <p className="text-sm text-muted-foreground">{HOME_COPY.whyCards[2].body}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="relative overflow-hidden bg-[#211832] py-20 text-white lg:py-28"><div className="absolute -right-48 top-0 size-[32rem] rounded-full bg-primary/25 blur-3xl"/><div className="section-shell relative grid items-center gap-10 lg:grid-cols-[.75fr_1.25fr]"><div><p className="text-sm font-bold uppercase tracking-[.16em] text-[#bcaaf2]">Package finder</p><h2 className="display-font text-balance mt-3 text-4xl font-bold sm:text-5xl">Not sure which build fits?</h2><p className="mt-5 leading-8 text-white/60">Answer three quick questions. We’ll point you to the logical starting package without asking for your email or phone number.</p></div><PackageRecommender/></div></section>
 
-      <section className="border-y bg-muted/40 py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">{HOME_COPY.alsoHelpTitle}</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">{HOME_COPY.alsoHelpIntro}</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {HOME_COPY.alsoHelpItems.map((item) => (
-              <Card key={item.title} className="border bg-background">
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                  <CardDescription>{item.text}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="compare" className="scroll-mt-24 py-20 lg:py-28"><div className="section-shell"><div className="mx-auto max-w-3xl text-center"><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">Clear scope, clear choice</p><h2 className="display-font mt-3 text-4xl font-bold sm:text-5xl">Choose your ecommerce package</h2><p className="mt-4 text-lg leading-8 text-muted-foreground">See what is included—and what is not—without reading a complicated feature table.</p></div><div className="mt-12 grid gap-5 lg:grid-cols-3">{plans.map((plan,i)=><article key={plan.name} className={`relative flex flex-col rounded-[1.75rem] border p-6 sm:p-7 ${i===1?'border-primary bg-primary/[.04] shadow-xl shadow-primary/10':'bg-background/80'}`}>{i===1&&<span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">Recommended for D2C</span>}<p className="text-sm font-bold text-primary">{plan.audience}</p><h3 className="display-font mt-3 text-2xl font-bold">{plan.name}</h3><p className="mt-2 text-4xl font-bold">{plan.price}</p><p className="mt-3 min-h-12 text-sm leading-6 text-muted-foreground">{plan.summary}</p><ul className="my-7 flex-1 space-y-3">{plan.features.map(([feature,included])=><li key={feature} className={`flex items-start gap-3 text-sm ${included?'text-foreground':'text-muted-foreground'}`}><span className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${included?'bg-emerald-50 text-emerald-600':'bg-red-50 text-red-500'}`}>{included?<Check className="size-3.5" strokeWidth={3}/>:<X className="size-3.5" strokeWidth={3}/>}</span><span className={included?'font-medium':'line-through decoration-red-300'}>{feature}</span></li>)}</ul><WhatsAppLink prompt={plan.prompt} className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-whatsapp text-sm font-bold text-white transition hover:bg-whatsapp-hover"><MessageCircle className="size-4"/>Ask about this package</WhatsAppLink><Link href={plan.href} className="mt-4 text-center text-sm font-bold text-primary">See complete scope</Link></article>)}</div><p className="mx-auto mt-8 max-w-4xl text-center text-xs leading-6 text-muted-foreground">Starting prices apply to the defined base scope. Domain, hosting, platform subscriptions, paid apps or plugins, gateway charges, Play Store fees, additional products and custom development are separate unless included in writing.</p></div></section>
 
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="mb-10 text-center text-2xl font-semibold md:text-3xl">How we work</h3>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {HOME_COPY.processSteps.map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
-                  {item.step}
-                </div>
-                <p className="font-semibold">{item.title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="border-y bg-primary/[.035] py-20 lg:py-28"><div className="section-shell"><div className="grid items-end gap-6 lg:grid-cols-2"><div><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">One connected ecommerce system</p><h2 className="display-font text-balance mt-3 text-4xl font-bold sm:text-5xl">The store is only one part of selling online.</h2></div><p className="max-w-xl text-lg leading-8 text-muted-foreground lg:justify-self-end">Your storefront, catalog, payments, shipping, tracking and campaigns should be planned together—not handed across disconnected vendors.</p></div><div className="mt-12"><CommerceFlow/></div></div></section>
 
-      <section className="bg-muted/50 py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">Client feedback</h2>
-            <p className="text-muted-foreground">{HOME_COPY.clientFeedbackIntro}</p>
-          </div>
-          <div className="mx-auto max-w-2xl">
-            <Card className="border-2">
-              <CardContent className="p-8">
-                <div className="mb-4 flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="mb-4 h-8 w-8 text-primary/25" aria-hidden />
-                <p className="mb-6 text-muted-foreground">&quot;{HOME_COPY.testimonialBody}&quot;</p>
-                <div className="font-semibold">{HOME_COPY.testimonialName}</div>
-                <div className="text-sm text-muted-foreground">{HOME_COPY.testimonialRole}</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <section id="grow" className="scroll-mt-24 py-20 lg:py-28"><div className="section-shell grid items-center gap-12 lg:grid-cols-2"><div className="group relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-primary/15 bg-[#171126] shadow-[0_40px_100px_-40px_rgba(79,58,158,.65)]"><Image src="/images/grow-store-premium.png" alt="Ecommerce storefront growth and conversion analytics command center" fill sizes="(max-width: 1024px) 100vw, 48vw" className="object-cover transition duration-700 group-hover:scale-[1.025]"/><div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#171126]/65 via-transparent to-transparent"/><div className="glass-dark absolute inset-x-4 bottom-4 rounded-2xl px-4 py-3 text-white sm:inset-x-5 sm:bottom-5"><p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#bcaaf2]">Ecommerce growth review</p><p className="mt-1 text-sm font-semibold">Store UX · conversion · tracking · acquisition</p></div><div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"/></div><div><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">Already selling?</p><h2 className="display-font text-balance mt-3 text-4xl font-bold sm:text-5xl">Improve the store you already have.</h2><p className="mt-5 text-lg leading-8 text-muted-foreground">Existing ecommerce businesses do not need another starter package. They need a focused review of what is preventing clearer buying decisions or scalable acquisition.</p><ul className="mt-7 grid gap-3 sm:grid-cols-2">{['Store and product-page UX','Conversion-focused graphics','Meta tracking and catalog','Payment and checkout flow','Campaign creative and structure','Logistics integration issues'].map(x=><li key={x} className="flex items-center gap-2 text-sm font-semibold"><Check className="size-4 text-primary"/>{x}</li>)}</ul><WhatsAppLink prompt="Hi Digital Thriv, I already have an ecommerce store and want a review of its UX, conversion, tracking or Meta Ads. Please guide me on what information to share." className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-whatsapp px-5 font-bold text-white hover:bg-whatsapp-hover"><MessageCircle className="size-4"/>Review my existing store</WhatsAppLink></div></div></section>
 
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="mb-3 text-3xl font-bold md:text-4xl">Contact</h2>
-            <p className="mx-auto max-w-xl text-muted-foreground">{HOME_COPY.contactIntro}</p>
-          </div>
-          <div className="mx-auto flex max-w-4xl flex-col flex-wrap items-center justify-center gap-6 rounded-xl border bg-background px-6 py-8 text-center text-sm sm:flex-row sm:gap-10 md:text-left">
-            <div className="flex flex-col items-center gap-1 sm:items-start">
-              <span className="flex items-center gap-2 font-medium text-foreground">
-                <Mail className="h-4 w-4 text-primary" aria-hidden />
-                Email
-              </span>
-              <a href={`mailto:${APP_CONFIG.contactEmail}`} className="text-primary underline underline-offset-4">
-                {APP_CONFIG.contactEmail}
-              </a>
-            </div>
-            <div className="flex flex-col items-center gap-1 sm:items-start">
-              <span className="flex items-center gap-2 font-medium text-foreground">
-                <WhatsAppIcon className="size-4 shrink-0 text-whatsapp" aria-hidden />
-                WhatsApp / phone
-              </span>
-              <a
-                href={WHATSAPP_DEFAULT}
-                className="font-medium text-whatsapp underline underline-offset-4 hover:text-whatsapp-hover"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {APP_CONFIG.contactPhoneDisplay}
-              </a>
-            </div>
-            <div className="flex flex-col items-center gap-1 sm:items-start">
-              <span className="flex items-center gap-2 font-medium text-foreground">
-                <MapPin className="h-4 w-4 text-primary" aria-hidden />
-                Location
-              </span>
-              <span className="max-w-xs text-muted-foreground">{APP_CONFIG.contactAddress}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+    <ReviewShowcase reviews={reviews}/>
 
-      <section className="bg-gradient-to-r from-primary to-brand-deep py-16 md:py-20">
-        <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">{HOME_COPY.ctaTitle}</h2>
-          <p className="mx-auto mb-8 max-w-xl text-lg text-primary-foreground/90">{HOME_COPY.ctaSub}</p>
-          <Button
-            size="lg"
-            className="h-auto gap-2 px-10 py-5 text-lg text-white shadow-lg bg-whatsapp hover:bg-whatsapp-hover focus-visible:ring-2 focus-visible:ring-white/40"
-            asChild
-          >
-            <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon className="size-6 shrink-0" />
-              Open WhatsApp
-            </a>
-          </Button>
-        </div>
-      </section>
+    <section className="border-y bg-muted/40 py-20 lg:py-28"><div className="section-shell max-w-4xl"><div className="text-center"><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">Before you decide</p><h2 className="display-font mt-3 text-4xl font-bold sm:text-5xl">Straight answers to buying questions</h2></div><div className="mt-10 divide-y overflow-hidden rounded-3xl border bg-background px-5 sm:px-8">{homepageFaqs.map(item=><details key={item.q} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-bold"><span>{item.q}</span><span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-primary transition group-open:rotate-45">+</span></summary><p className="max-w-3xl pb-2 pt-4 leading-7 text-muted-foreground">{item.a}</p></details>)}</div></div></section>
 
-      <footer className="border-t bg-muted/50 py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 text-sm text-muted-foreground md:grid-cols-2 lg:grid-cols-3">
-            <div className="space-y-2">
-              <p className="text-base font-semibold text-foreground">Need support?</p>
-              <p>
-                Email{' '}
-                <a href={`mailto:${APP_CONFIG.contactEmail}`} className="text-primary underline">
-                  {APP_CONFIG.contactEmail}
-                </a>
-                {' · '}
-                <a href={contactTelHref()} className="text-primary underline">
-                  {APP_CONFIG.contactPhoneDisplay}
-                </a>
-              </p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-base font-semibold text-foreground">Company</p>
-              <ul className="space-y-1">
-                <li>
-                  <Link href="/privacy-policy" className="hover:text-primary">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms-and-conditions" className="hover:text-primary">
-                    Terms &amp; Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cancellation-and-refund-policy" className="hover:text-primary">
-                    Cancellation &amp; Refund Policy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <p className="text-base font-semibold text-foreground">Visit us</p>
-              <p>{APP_CONFIG.contactAddress}</p>
-            </div>
-          </div>
-          <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Digital Thriv. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+    <section className="relative overflow-hidden bg-[#211832] py-20 text-white lg:py-24"><div className="absolute -left-32 -top-32 size-96 rounded-full bg-primary/30 blur-3xl"/><div className="section-shell relative grid items-center gap-10 lg:grid-cols-[1fr_.8fr]"><div><p className="text-sm font-bold uppercase tracking-[.16em] text-[#bcaaf2]">The next step is simple</p><h2 className="display-font text-balance mt-3 text-4xl font-bold sm:text-5xl">Tell us what you want to build or improve.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">Send your business type, product category and approximate catalog size. We’ll recommend the appropriate starting point and confirm the scope.</p></div><div className="glass-dark rounded-3xl p-5 sm:p-6"><div className="flex items-start gap-3"><div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-whatsapp"><MessageCircle className="size-5"/></div><div className="rounded-2xl rounded-tl-sm bg-white px-4 py-3 text-sm leading-6 text-[#211832]">Hi Digital Thriv, I want to build a D2C ecommerce store. Please guide me on the information you need and the next steps.</div></div><WhatsAppLink prompt="Hi Digital Thriv, I want help building or improving my ecommerce store. Please guide me on the information you need and the next steps." className="mt-5 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-whatsapp font-bold text-white hover:bg-whatsapp-hover"><MessageCircle className="size-4"/>Start the conversation</WhatsAppLink><a href={`tel:${APP_CONFIG.contactPhoneE164}`} className="mt-3 flex min-h-11 items-center justify-center text-sm font-semibold text-white/65 hover:text-white">Prefer to call? {APP_CONFIG.contactPhoneDisplay}</a></div></div></section>
+
+  </main><SiteFooter/></div>;
 }
