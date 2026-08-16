@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react';
+import Link from 'next/link';
 import { flushSync } from 'react-dom';
 
 type Review = { author:string; review_text:string; stars:number; date?:string };
@@ -52,6 +53,7 @@ export function ReviewShowcase({ reviews }: { reviews:Review[] }) {
             <button onClick={previous} disabled={transitioning} aria-label="Previous testimonial" className="flex size-13 items-center justify-center rounded-full border border-black/15 bg-white transition hover:-translate-x-0.5 hover:border-primary/45 hover:text-primary hover:shadow-md disabled:pointer-events-none disabled:opacity-55"><ArrowLeft className="size-5"/></button>
             <button onClick={next} disabled={transitioning} aria-label="Next testimonial" className="flex size-13 items-center justify-center rounded-full border border-black/15 bg-white transition hover:translate-x-0.5 hover:border-primary/45 hover:text-primary hover:shadow-md disabled:pointer-events-none disabled:opacity-55"><ArrowRight className="size-5"/></button>
           </div>
+          <Link href="/customer-reviews" className="mt-7 inline-flex text-sm font-bold text-primary transition hover:text-brand-deep">See all customer reviews →</Link>
         </div>
 
         <div key={active} className={`testimonial-panel relative min-h-[25rem] rounded-[2rem] border border-black/[.07] bg-white p-7 shadow-[0_30px_80px_-54px_rgba(31,24,48,.4)] transition-[opacity,transform,filter] sm:p-10 lg:p-12 ${visible?'translate-y-0 opacity-100 blur-0 duration-1200':'translate-y-2 opacity-0 blur-[2px] duration-300'}`} aria-live="polite">

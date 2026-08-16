@@ -61,8 +61,7 @@ function WhatsAppLink({ prompt, children, className='' }: { prompt:string; child
 }
 
 export default function Home() {
-  const organization = { '@context':'https://schema.org', '@type':'ProfessionalService', name:'Digital Thriv', url:APP_CONFIG.websiteUrl, logo:APP_CONFIG.logo, email:APP_CONFIG.contactEmail, telephone:APP_CONFIG.contactPhoneE164, priceRange:'₹2,999–₹9,999+', contactPoint:{ '@type':'ContactPoint', telephone:APP_CONFIG.contactPhoneE164, contactType:'sales', areaServed:'IN', availableLanguage:['English','Hindi'] }, address:{ '@type':'PostalAddress', addressLocality:'Banda', addressRegion:'Uttar Pradesh', postalCode:'208025', addressCountry:'IN' }, areaServed:'IN' };
-  return <div className="min-h-screen pb-20 md:pb-0"><JsonLd data={organization}/><JsonLd data={faqSchema(homepageFaqs)}/><SiteHeader/><main>
+  return <div className="min-h-screen pb-20 md:pb-0"><JsonLd data={faqSchema(homepageFaqs)}/><SiteHeader/><main>
 
     <section className="relative overflow-hidden pb-16 pt-10 sm:pt-16 lg:pb-24 lg:pt-20">
       <div className="absolute left-1/2 top-0 -z-10 h-[36rem] w-[72rem] -translate-x-1/2 rounded-full bg-primary/[.07] blur-3xl"/>

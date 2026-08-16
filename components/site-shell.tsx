@@ -71,7 +71,8 @@ export function SiteFooter() {
               <Link href="/#intent" className="transition hover:text-primary">Choose a service</Link>
               <Link href="/#compare" className="transition hover:text-primary">Compare packages</Link>
               <Link href="/ecommerce-growth-conversion-optimization" className="transition hover:text-primary">Improve your store</Link>
-              <Link href="/#reviews" className="transition hover:text-primary">Customer stories</Link>
+              <Link href="/customer-reviews" className="transition hover:text-primary">Customer reviews</Link>
+              <Link href="/about-digital-thriv" className="transition hover:text-primary">About Digital Thriv</Link>
               <a href={`${APP_CONFIG.dashboardUrl}/auth/signin`} target="_blank" rel="noopener noreferrer" className="transition hover:text-primary">Client sign in</a>
             </nav>
           </div>
