@@ -150,8 +150,14 @@ export function ServicePage({
           </div>
         </section>
 
-        <section aria-label="Ecommerce technology integrations" className="border-y border-border/60 py-8 sm:py-10">
+        <section aria-labelledby="partners-heading" className="border-y border-border/60 py-8 sm:py-10">
           <div className="section-shell">
+            <div className="mb-7 text-center sm:mb-8">
+              <h2 id="partners-heading" className="display-font text-2xl font-bold sm:text-3xl">Partners and Integration</h2>
+              <p className="mt-2 text-sm font-semibold text-muted-foreground sm:text-base">
+                <span className="text-foreground">Official Shopify Partner.</span> Integrated with Meta, Cashfree, Shiprocket &amp; more.
+              </p>
+            </div>
             <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-9 gap-y-7 sm:gap-x-12 lg:justify-between">
               {TRUST_PARTNER_LOGOS.map(({ src, alt }) => (
                 <div key={src} className="group relative h-8 w-24 sm:h-9 sm:w-28 lg:w-32">
