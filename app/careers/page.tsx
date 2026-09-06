@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, MapPin } from 'lucide-react';
-import { JsonLd, SiteFooter, SiteHeader } from '@/components/site-shell';
+import { JsonLd, SiteHeader } from '@/components/site-shell';
 import { APP_CONFIG } from '@/lib/constants';
 import { departmentLabel, employmentTypeLabel, fetchPublishedJobs } from '@/lib/crm';
 
@@ -39,9 +39,9 @@ export default async function CareersPage() {
   const jobs = await fetchPublishedJobs();
 
   return (
-    <div className="min-h-screen pb-20 md:pb-0">
+    <div className="min-h-screen">
       <JsonLd data={pageSchema} />
-      <SiteHeader />
+      <SiteHeader variant="logoOnly" />
       <main>
         <section className="relative overflow-hidden py-16 lg:py-24">
           <div className="absolute left-1/2 top-0 -z-10 h-[30rem] w-[70rem] -translate-x-1/2 rounded-full bg-primary/[.07] blur-3xl" />
@@ -95,7 +95,6 @@ export default async function CareersPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </div>
   );
 }

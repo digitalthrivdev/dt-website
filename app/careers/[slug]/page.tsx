@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, MapPin } from 'lucide-react';
-import { JsonLd, SiteFooter, SiteHeader } from '@/components/site-shell';
+import { JsonLd, SiteHeader } from '@/components/site-shell';
 import { APP_CONFIG } from '@/lib/constants';
 import { departmentLabel, employmentTypeLabel, fetchPublishedJob } from '@/lib/crm';
 import { CareerApplyForm } from './apply-form';
@@ -83,10 +83,10 @@ export default async function CareerJobPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen pb-20 md:pb-0">
+    <div className="min-h-screen">
       <JsonLd data={jobSchema} />
       <JsonLd data={breadcrumbSchema} />
-      <SiteHeader />
+      <SiteHeader variant="logoOnly" />
       <main>
         <section className="relative overflow-hidden py-14 lg:py-20">
           <div className="absolute left-1/2 top-0 -z-10 h-[30rem] w-[70rem] -translate-x-1/2 rounded-full bg-primary/[.07] blur-3xl" />
@@ -123,7 +123,6 @@ export default async function CareerJobPage({ params }: PageProps) {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </div>
   );
 }

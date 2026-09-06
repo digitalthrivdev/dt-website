@@ -8,32 +8,37 @@ import { APP_CONFIG, whatsappUrl } from '@/lib/constants';
 const quoteUrl = whatsappUrl('Hi, I would like a written quote for an ecommerce package.');
 const supportUrl = whatsappUrl('Hi Digital Thriv Support, I need help with my existing project. Please let me know what details you need to identify my project and resolve the issue.');
 
-export function SiteHeader() {
+export function SiteHeader({ variant = 'default' }: { variant?: 'default' | 'logoOnly' } = {}) {
+  const logoOnly = variant === 'logoOnly';
   return (
     <><header className="sticky top-0 z-50 border-b border-primary/10 bg-background/86 backdrop-blur-xl">
       <div className="container mx-auto flex min-h-[4.5rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="Digital Thriv home">
+        <Link href={logoOnly ? '/careers' : '/'} className="flex items-center gap-2" aria-label={logoOnly ? 'Careers at Digital Thriv' : 'Digital Thriv home'}>
           <Image src={APP_CONFIG.logo} alt="Digital Thriv" width={34} height={34} className="rounded-full" />
           <span className="brand-wordmark text-[1.15rem] leading-none text-foreground">Digital <span className="brand-wordmark-accent text-primary">Thriv</span></span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium lg:flex" aria-label="Main navigation">
-          <Link href="/#intent" className="hover:text-primary">Start a Store</Link>
-          <Link href="/shopify-website-development-packages-india#d2c" className="hover:text-primary">Build a D2C Brand</Link>
-          <Link href="/ecommerce-app-development-agency" className="hover:text-primary">Website + App</Link>
-          <Link href="/ecommerce-growth-conversion-optimization" className="hover:text-primary">Grow Your Store</Link>
-          <Link href="/#reviews" className="hover:text-primary">Results</Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" className="hidden sm:inline-flex">
-            <a href={`${APP_CONFIG.dashboardUrl}/auth/signin`} target="_blank" rel="noopener noreferrer">Sign In</a>
-          </Button>
-          <Button asChild className="hidden rounded-xl bg-whatsapp text-white shadow-lg shadow-whatsapp/15 hover:bg-whatsapp-hover md:inline-flex">
-            <a href={quoteUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-4"/>Discuss your store</a>
-          </Button>
-          <Button asChild variant="outline" className="sm:hidden"><a href={`${APP_CONFIG.dashboardUrl}/auth/signin`} target="_blank" rel="noopener noreferrer">Sign In</a></Button>
-        </div>
+        {logoOnly ? null : (
+          <>
+            <nav className="hidden items-center gap-6 text-sm font-medium lg:flex" aria-label="Main navigation">
+              <Link href="/#intent" className="hover:text-primary">Start a Store</Link>
+              <Link href="/shopify-website-development-packages-india#d2c" className="hover:text-primary">Build a D2C Brand</Link>
+              <Link href="/ecommerce-app-development-agency" className="hover:text-primary">Website + App</Link>
+              <Link href="/ecommerce-growth-conversion-optimization" className="hover:text-primary">Grow Your Store</Link>
+              <Link href="/#reviews" className="hover:text-primary">Results</Link>
+            </nav>
+            <div className="flex items-center gap-2">
+              <Button asChild variant="ghost" className="hidden sm:inline-flex">
+                <a href={`${APP_CONFIG.dashboardUrl}/auth/signin`} target="_blank" rel="noopener noreferrer">Sign In</a>
+              </Button>
+              <Button asChild className="hidden rounded-xl bg-whatsapp text-white shadow-lg shadow-whatsapp/15 hover:bg-whatsapp-hover md:inline-flex">
+                <a href={quoteUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-4"/>Discuss your store</a>
+              </Button>
+              <Button asChild variant="outline" className="sm:hidden"><a href={`${APP_CONFIG.dashboardUrl}/auth/signin`} target="_blank" rel="noopener noreferrer">Sign In</a></Button>
+            </div>
+          </>
+        )}
       </div>
-    </header><MobileConversionDock /></>
+    </header>{logoOnly ? null : <MobileConversionDock />}</>
   );
 }
 
