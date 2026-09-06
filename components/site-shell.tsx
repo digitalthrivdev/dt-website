@@ -8,12 +8,14 @@ import { APP_CONFIG, whatsappUrl } from '@/lib/constants';
 const quoteUrl = whatsappUrl('Hi, I would like a written quote for an ecommerce package.');
 const supportUrl = whatsappUrl('Hi Digital Thriv Support, I need help with my existing project. Please let me know what details you need to identify my project and resolve the issue.');
 
-export function SiteHeader({ variant = 'default' }: { variant?: 'default' | 'logoOnly' } = {}) {
+export function SiteHeader({ variant = 'default', logoHref }: { variant?: 'default' | 'logoOnly'; logoHref?: string } = {}) {
   const logoOnly = variant === 'logoOnly';
+  const href = logoHref ?? (logoOnly ? '/careers' : '/');
+  const homeLabel = href === '/careers' ? 'Careers at Digital Thriv' : 'Digital Thriv home';
   return (
     <><header className="sticky top-0 z-50 border-b border-primary/10 bg-background/86 backdrop-blur-xl">
       <div className="container mx-auto flex min-h-[4.5rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href={logoOnly ? '/careers' : '/'} className="flex items-center gap-2" aria-label={logoOnly ? 'Careers at Digital Thriv' : 'Digital Thriv home'}>
+        <Link href={href} className="flex items-center gap-2" aria-label={homeLabel}>
           <Image src={APP_CONFIG.logo} alt="Digital Thriv" width={34} height={34} className="rounded-full" />
           <span className="brand-wordmark text-[1.15rem] leading-none text-foreground">Digital <span className="brand-wordmark-accent text-primary">Thriv</span></span>
         </Link>
