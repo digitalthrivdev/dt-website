@@ -49,9 +49,10 @@ export const entityGraph = {
       priceRange: '₹2,999–₹9,999+',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Banda',
-        addressRegion: 'Uttar Pradesh',
-        postalCode: '208025',
+        streetAddress: '5th Floor, Iscon Emporio, Pandurang Shastri Marg, Beside Star Bazaar, Satellite',
+        addressLocality: 'Ahmedabad',
+        addressRegion: 'Gujarat',
+        postalCode: '380015',
         addressCountry: 'IN',
       },
       areaServed: { '@type': 'Country', name: 'India' },

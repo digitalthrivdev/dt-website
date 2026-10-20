@@ -110,7 +110,7 @@ export default function TermsAndConditionsPage() {
         <h2 className="text-2xl font-semibold">9. Governing Law</h2>
         <p className="text-muted-foreground">
           These Terms shall be governed by and construed in accordance with the laws of India. Any disputes shall be
-          subject to the jurisdiction of the courts in BANDA, Uttar Pradesh.
+          subject to the jurisdiction of the courts in Ahmedabad, Gujarat.
         </p>
       </section>
 

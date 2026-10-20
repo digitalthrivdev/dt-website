@@ -60,7 +60,7 @@ export default function AboutDigitalThriv() {
           <div>
             <p className="text-sm font-bold uppercase tracking-[.16em] text-primary">About Digital Thriv</p>
             <h1 className="display-font text-balance mt-4 text-5xl font-bold leading-[1.04] sm:text-6xl lg:text-[4.4rem]">An ecommerce execution partner for Indian online sellers.</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">Digital Thriv is an ecommerce development and growth company based in Banda, Uttar Pradesh. We help dropshippers, D2C founders and online retailers launch or improve Shopify stores, WooCommerce stores and Android ecommerce apps.</p>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">Digital Thriv is an ecommerce development and growth company based in Ahmedabad, Gujarat. We help dropshippers, D2C founders and online retailers launch or improve Shopify stores, WooCommerce stores and Android ecommerce apps.</p>
           </div>
           <div className="rounded-[1.75rem] bg-[#211832] p-6 text-white shadow-2xl shadow-primary/15 sm:p-8">
             <p className="text-xs font-bold uppercase tracking-[.15em] text-[#bcaaf2]">The short answer</p>

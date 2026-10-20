@@ -3,6 +3,7 @@ Goal: Understand the business model and system context before making any changes
 Business Context:
 
 Our agency called Digital Thriv.
+Office Address: 5th Floor, Iscon Emporio, Pandurang Shastri Marg, beside Star Bazaar, Satellite, Ahmedabad, Gujarat 380015
 
 Duration:
 - Operating for ~2 years

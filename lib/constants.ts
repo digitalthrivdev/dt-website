@@ -14,7 +14,8 @@ export const APP_CONFIG = {
   contactPhoneE164: '+916390593877',
   /** Human-readable phone line */
   contactPhoneDisplay: '+91 63905 93877',
-  contactAddress: 'BANDA, Uttar Pradesh 208025, India',
+  contactAddress:
+    '5th Floor, Iscon Emporio, Pandurang Shastri Marg, Beside Star Bazaar, Satellite, Ahmedabad, Gujarat 380015, India',
   whatsappCommunityUrl: 'https://chat.whatsapp.com/HzHEgYFDOFdKOBAfnMribl',
 } as const;
 
