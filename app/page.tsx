@@ -11,19 +11,19 @@ import { faqSchema, faqs } from '@/lib/seo-content';
 import reviews from '@/lib/reviews.json';
 
 export const metadata: Metadata = {
-  title: { absolute: 'E-commerce Website Development From ₹2,999 | Digital Thriv' },
-  description: 'Build, improve or grow your ecommerce store. Shopify from ₹2,999, customized D2C websites from ₹4,999, and website plus Android app from ₹9,999.',
+  title: { absolute: 'Performance Marketing, Lead Generation & E-commerce | Digital Thriv' },
+  description: 'Scale your brand with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'E-commerce Website Development From ₹2,999 | Digital Thriv',
-    description: 'Shopify, customized D2C websites and Android ecommerce apps with catalog, payments, logistics and Meta integrations.',
+    title: 'Performance Marketing, Lead Generation & E-commerce | Digital Thriv',
+    description: 'Scale your brand with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
     url: '/',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'E-commerce Website Development From ₹2,999 | Digital Thriv',
-    description: 'Shopify, customized D2C websites and Android ecommerce apps with catalog, payments, logistics and Meta integrations.',
+    title: 'Performance Marketing, Lead Generation & E-commerce | Digital Thriv',
+    description: 'Scale your brand with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
   },
 };
 
@@ -35,23 +35,23 @@ const stats = [
 ] as const;
 
 const intentCards = [
-  { icon: Rocket, eyebrow:'START FAST', title:'Start a Dropshipping Store', description:'Get a professionally configured, template-based Shopify store with your catalog and essential integrations.', price:'₹2,999', cta:'Launch my store', href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to start a dropshipping store with the ₹2,999 Shopify package.' },
-  { icon: Palette, eyebrow:'BUILD YOUR BRAND', title:'Build a D2C Store', description:'Create a more customized Shopify or WooCommerce storefront with premium graphics and conversion-focused sections.', price:'₹4,999', cta:'Build my D2C store', href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want to build a customized D2C store with the ₹4,999 package.' },
-  { icon: Smartphone, eyebrow:'WEB + MOBILE', title:'Launch a Website + App', description:'Sell through a connected ecommerce website and Android shopping app with your catalog and core integrations.', price:'₹9,999', cta:'Get website + app', href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want the ₹9,999 ecommerce website and Android app package.' },
+  { icon: Rocket, eyebrow:'START FAST', title:'Start a Dropshipping Store', description:'Get a professionally configured, template-based Shopify store with your catalog and essential integrations.', price:'Starter Plan', cta:'Launch my store', href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to start a dropshipping store with your starter Shopify package.' },
+  { icon: Palette, eyebrow:'BUILD YOUR BRAND', title:'Build a D2C Store', description:'Create a more customized Shopify or WooCommerce storefront with premium graphics and conversion-focused sections.', price:'Customized', cta:'Build my D2C store', href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want to build a customized D2C store.' },
+  { icon: Smartphone, eyebrow:'WEB + MOBILE', title:'Launch a Website + App', description:'Sell through a connected ecommerce website and Android shopping app with your catalog and core integrations.', price:'Web + App', cta:'Get website + app', href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want an ecommerce website and Android app package.' },
   { icon: BarChart3, eyebrow:'IMPROVE PERFORMANCE', title:'Grow an Existing Store', description:'Improve presentation, conversion, tracking or customer acquisition for an ecommerce store already online.', price:'Custom scope', cta:'Review my store', href:'/ecommerce-growth-conversion-optimization', prompt:'Hi Digital Thriv, I already have an ecommerce store and want help improving its conversion or growth.' },
 ] as const;
 
 const plans = [
-  { name:'Dropshipping Shopify', price:'₹2,999', audience:'For product testers and beginners', summary:'Launch fast with a polished, template-based Shopify store.', features:[['Premium Shopify theme',true],['Dropshipping supplier integration',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Essential trust elements',true],['Premium custom graphics',false],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to launch the ₹2,999 Shopify dropshipping store.' },
-  { name:'Customized D2C', price:'₹4,999', audience:'For D2C and ecommerce brands', summary:'Build a more distinctive storefront around your products and brand.', features:[['Higher theme customization',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want the ₹4,999 customized D2C package.' },
-  { name:'Website + Android App', price:'₹9,999', audience:'For mobile-first D2C brands', summary:'Create a connected website and Android commerce experience.', features:[['Customized ecommerce website',true],['Android shopping app',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true]] as const, href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want the ₹9,999 website and Android app package.' },
+  { name:'Dropshipping Shopify', price:'Starter Plan', audience:'For product testers and beginners', summary:'Launch fast with a polished, template-based Shopify store.', features:[['Premium Shopify theme',true],['Dropshipping supplier integration',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Essential trust elements',true],['Premium custom graphics',false],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#dropshipping', prompt:'Hi Digital Thriv, I want to launch a Shopify dropshipping store.' },
+  { name:'Customized D2C', price:'Customized D2C', audience:'For D2C and ecommerce brands', summary:'Build a more distinctive storefront around your products and brand.', features:[['Higher theme customization',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true],['Android shopping app',false]] as const, href:'/shopify-website-development-packages-india#d2c', prompt:'Hi Digital Thriv, I want the customized D2C package.' },
+  { name:'Website + Android App', price:'Web + App', audience:'For mobile-first D2C brands', summary:'Create a connected website and Android commerce experience.', features:[['Customized ecommerce website',true],['Android shopping app',true],['Premium graphics and banners',true],['Conversion-focused sections',true],['Catalog upload within agreed limit',true],['Payment, logistics and Meta setup',true]] as const, href:'/ecommerce-app-development-agency', prompt:'Hi Digital Thriv, I want the website and Android app package.' },
 ] as const;
 
 const homepageFaqs = [
-  { q:'What does E-commerce website development cost in India?', a:'Digital Thriv packages start at ₹2,999 for a template-based Shopify dropshipping store, ₹4,999 for a more customized D2C storefront, and ₹9,999 for an ecommerce website with an Android shopping app. The final E-commerce website development cost depends on catalog size, platform, third-party apps, custom development and the written scope.' },
-  { q:'Which ecommerce package is right for me?', a:'Choose the ₹2,999 Shopify package if you are testing products and want a fast template-based launch. Choose the ₹4,999 package if you are building a longer-term D2C brand and need higher customization. Choose ₹9,999 when you need both an ecommerce website and Android shopping app.' },
-  { q:'Why is Digital Thriv more affordable than traditional agencies?', a:'We use defined package scopes, repeatable ecommerce workflows and proven platform components. This reduces agency overhead while preserving the catalog, payment, logistics and marketing integrations needed to launch.' },
-  { q:'What does template-based mean?', a:'The ₹2,999 package uses an established premium Shopify theme structure adapted with your products, brand colors and content. Extensive layout changes, custom-coded sections and advanced custom graphics are outside that base package.' },
+  { q:'How does Digital Thriv structure its packages and pricing?', a:'We work with clearly defined scopes based on your goals—whether running high-ROAS Meta ad campaigns, generating high-intent leads, or launching custom Shopify and WooCommerce stores. Every project receives a written quotation with no hidden costs.' },
+  { q:'Which service or package is right for me?', a:'If you are launching for the first time, our starter store setups provide everything needed to begin selling. If you are building a distinctive brand, our customized D2C and app packages offer deeper brand design. If you already have a store and want growth, our performance marketing and lead generation services focus directly on driving sales.' },
+  { q:'Why is Digital Thriv more effective than traditional web agencies?', a:'We combine performance marketing, lead generation funnels, and store development under one roof. Stores are built specifically to convert ad traffic, and campaigns are managed by specialists with a track record of scaling ecommerce brands.' },
+  { q:'What is included in a store build?', a:'Every store build includes catalog integration, payment gateway connection, logistics setup, Meta Pixel tracking, policy pages, and mobile-responsive checkout testing.' },
   { q:'What are conversion boosters?', a:'Depending on the package, conversion boosters can include trust indicators, promotional banners, stronger calls to action, product benefits, reassurance content, offer displays and cross-sell elements supported by the platform.' },
   ...faqs,
 ];
@@ -67,14 +67,14 @@ export default function Home() {
       <div className="absolute left-1/2 top-0 -z-10 h-[36rem] w-[72rem] -translate-x-1/2 rounded-full bg-primary/[.07] blur-3xl"/>
       <div className="section-shell grid items-center gap-10 lg:grid-cols-[1.02fr_.98fr] lg:gap-14">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/[.06] px-3 py-1.5 text-xs font-bold uppercase tracking-[.14em] text-primary"><Sparkles className="size-3.5"/>Ecommerce websites, apps and growth</div>
-          <h1 className="display-font text-balance mt-6 text-[2.65rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.35rem]">Build, improve or grow your <span className="text-primary">ecommerce store.</span></h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">From a Shopify launch at ₹2,999 to a customized D2C store or Android shopping app—get the technology, integrations and guidance required to start selling.</p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/[.06] px-3 py-1.5 text-xs font-bold uppercase tracking-[.14em] text-primary"><Sparkles className="size-3.5"/>Performance Marketing · Lead Gen · Ecommerce</div>
+          <h1 className="display-font text-balance mt-6 text-[2.65rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.35rem]">Scale your revenue, leads, and <span className="text-primary">ecommerce store.</span></h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">From high-ROAS Meta Ads and automated lead funnels to conversion-engineered Shopify and WooCommerce stores—get the growth system built to scale.</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <WhatsAppLink prompt="Hi Digital Thriv, I want help choosing the right ecommerce package for my business." className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 font-bold text-white shadow-lg shadow-whatsapp/20 transition hover:-translate-y-0.5 hover:bg-whatsapp-hover"><MessageCircle className="size-5"/>Discuss your ecommerce store</WhatsAppLink>
-            <a href="#compare" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-primary/20 bg-white/75 px-6 font-bold text-foreground transition hover:border-primary/45 hover:bg-white">Compare packages<ChevronRight className="size-4 text-primary"/></a>
+            <WhatsAppLink prompt="Hi Digital Thriv, I want to discuss scaling my business with performance marketing, lead generation or an ecommerce store." className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 font-bold text-white shadow-lg shadow-whatsapp/20 transition hover:-translate-y-0.5 hover:bg-whatsapp-hover"><MessageCircle className="size-5"/>Discuss your project</WhatsAppLink>
+            <a href="#compare" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-primary/20 bg-white/75 px-6 font-bold text-foreground transition hover:border-primary/45 hover:bg-white">Explore services<ChevronRight className="size-4 text-primary"/></a>
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-muted-foreground"><span>Shopify ₹2,999</span><span className="text-primary/35">•</span><span>D2C ₹4,999</span><span className="text-primary/35">•</span><span>Website + App ₹9,999</span></div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-muted-foreground"><span>Performance Marketing</span><span className="text-primary/35">•</span><span>Lead Generation</span><span className="text-primary/35">•</span><span>High-Converting Stores</span></div>
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground"><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>Written scope</span><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>Business-owned account</span><span className="flex items-center gap-1.5"><Check className="size-4 text-primary"/>No mystery add-ons</span></div>
         </div>
         <div className="relative mx-auto aspect-[4/3] w-full max-w-[640px] overflow-hidden rounded-[2rem] border border-primary/15 bg-[#171126] shadow-[0_40px_100px_-40px_rgba(79,58,158,.72)]">

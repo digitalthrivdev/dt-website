@@ -6,27 +6,23 @@ export const websiteId = `${APP_CONFIG.websiteUrl}/#website`;
 const services = [
   {
     name: 'Shopify dropshipping store setup',
-    description: 'Template-based Shopify store with a premium theme, catalog upload and core ecommerce integrations.',
+    description: 'Professional Shopify store with a premium theme, catalog upload and core ecommerce integrations.',
     url: `${APP_CONFIG.websiteUrl}/shopify-website-development-packages-india#dropshipping`,
-    price: '2999',
   },
   {
     name: 'Customized D2C ecommerce store',
     description: 'A more customized D2C storefront with premium graphics and conversion-focused sections.',
     url: `${APP_CONFIG.websiteUrl}/shopify-website-development-packages-india#d2c`,
-    price: '4999',
   },
   {
     name: 'WooCommerce development for D2C brands',
     description: 'WooCommerce store setup with catalog, payment, logistics and Meta integration.',
     url: `${APP_CONFIG.websiteUrl}/woocommerce-development-d2c-india`,
-    price: '4999',
   },
   {
     name: 'Ecommerce website and Android app',
     description: 'Connected ecommerce website and Android shopping app with catalog and core integrations.',
     url: `${APP_CONFIG.websiteUrl}/ecommerce-app-development-agency`,
-    price: '9999',
   },
 ] as const;
 
@@ -42,11 +38,10 @@ export const entityGraph = {
         '@type': 'ImageObject',
         url: APP_CONFIG.logo,
       },
-      description: 'Digital Thriv builds and improves ecommerce stores for dropshippers, D2C founders and online retailers in India. Services include Shopify, WooCommerce, Android ecommerce apps, integrations, conversion optimization and performance marketing.',
-      slogan: 'Build, improve and grow your ecommerce store.',
+      description: 'Digital Thriv is an ecommerce growth, performance marketing, and lead generation agency in India. Services include Meta Ads, WhatsApp lead funnels, Shopify, WooCommerce, Android shopping apps, and conversion rate optimization.',
+      slogan: 'Performance Marketing, Lead Generation & High-Converting Ecommerce Stores.',
       email: APP_CONFIG.contactEmail,
       telephone: APP_CONFIG.contactPhoneE164,
-      priceRange: '₹2,999–₹9,999+',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '5th Floor, Iscon Emporio, Pandurang Shastri Marg, Beside Star Bazaar, Satellite',
@@ -79,11 +74,9 @@ export const entityGraph = {
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Digital Thriv ecommerce packages',
+        name: 'Digital Thriv services and solutions',
         itemListElement: services.map((service) => ({
           '@type': 'Offer',
-          priceCurrency: 'INR',
-          price: service.price,
           availability: 'https://schema.org/InStock',
           url: service.url,
           itemOffered: {

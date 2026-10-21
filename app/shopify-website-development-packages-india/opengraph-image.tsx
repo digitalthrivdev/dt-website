@@ -8,7 +8,7 @@ export default function Image() {
   return createSocialImage({
     eyebrow: 'Shopify website development packages India',
     title: 'Launch fast or build a customized D2C storefront.',
-    accent: 'Rs 2,999 · Rs 4,999',
+    accent: 'Starter & D2C Plans',
     detail: 'Theme · catalog · payments · logistics · Meta',
   });
 }

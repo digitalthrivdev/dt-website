@@ -5,9 +5,9 @@ import { Check, ChevronRight, MessageCircle, Phone, X } from 'lucide-react';
 import { APP_CONFIG, whatsappUrl } from '@/lib/constants';
 
 const intents = [
-  { id: 'dropshipping', label: 'Start dropshipping', price: '₹2,999', prompt: 'Hi Digital Thriv, I’m interested in the ₹2,999 Shopify dropshipping package. Please guide me on the details you need to get started.' },
-  { id: 'd2c', label: 'Build a D2C brand', price: '₹4,999', prompt: 'Hi Digital Thriv, I’m building a D2C brand and want the ₹4,999 customized store package. Please guide me on the next steps.' },
-  { id: 'app', label: 'Get website + app', price: '₹9,999', prompt: 'Hi Digital Thriv, I’m interested in the ₹9,999 website and Android app package. Please share the requirements and next steps.' },
+  { id: 'dropshipping', label: 'Start dropshipping', price: 'Starter Plan', prompt: 'Hi Digital Thriv, I’m interested in your Shopify dropshipping starter package. Please guide me on the details you need to get started.' },
+  { id: 'd2c', label: 'Build a D2C brand', price: 'Customized', prompt: 'Hi Digital Thriv, I’m building a D2C brand and want your customized store package. Please guide me on the next steps.' },
+  { id: 'app', label: 'Get website + app', price: 'Web + App', prompt: 'Hi Digital Thriv, I’m interested in your website and Android app package. Please share the requirements and next steps.' },
   { id: 'grow', label: 'Improve my store', price: 'Custom', prompt: 'Hi Digital Thriv, I already have an ecommerce store and want help with design, conversion, integrations or growth. Please guide me on what information to share.' },
 ] as const;
 
@@ -35,7 +35,7 @@ export function PackageRecommender() {
     const existing = answers[0] === 1;
     const app = answers[2] === 1;
     const d2c = answers[1] === 1;
-    const result = existing ? { name:'Store improvement & growth review', price:'Custom scope', prompt:intents[3].prompt } : app ? { name:'Website + Android App', price:'₹9,999', prompt:intents[2].prompt } : d2c ? { name:'Customized D2C Store', price:'₹4,999', prompt:intents[1].prompt } : { name:'Shopify Dropshipping Starter', price:'₹2,999', prompt:intents[0].prompt };
+    const result = existing ? { name:'Store improvement & growth review', price:'Custom scope', prompt:intents[3].prompt } : app ? { name:'Website + Android App', price:'Web + App Package', prompt:intents[2].prompt } : d2c ? { name:'Customized D2C Store', price:'Customized Plan', prompt:intents[1].prompt } : { name:'Shopify Dropshipping Starter', price:'Starter Package', prompt:intents[0].prompt };
     return <div className="glass-dark rounded-3xl p-6 text-white sm:p-8"><div className="flex size-11 items-center justify-center rounded-full bg-white text-primary"><Check className="size-5"/></div><p className="mt-6 text-sm font-medium text-white/60">Recommended for you</p><h3 className="display-font mt-2 text-3xl font-bold">{result.name}</h3><p className="mt-2 text-2xl font-bold text-white/85">{result.price}</p><p className="mt-4 max-w-xl leading-7 text-white/65">We’ll confirm the catalog limit, platform, integrations, timeline and third-party costs in writing before work begins.</p><div className="mt-7 flex flex-wrap gap-3"><a href={whatsappUrl(result.prompt)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-whatsapp px-5 font-bold text-white hover:bg-whatsapp-hover"><MessageCircle className="size-4"/>Ask about this package</a><button onClick={reset} className="min-h-12 rounded-xl border border-white/20 px-5 font-semibold text-white/80 hover:bg-white/10">Start again</button></div></div>;
   }
   const question = recommendationQuestions[step];

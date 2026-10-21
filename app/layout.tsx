@@ -10,7 +10,7 @@ const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(APP_CONFIG.websiteUrl),
   title: {
-    default: `${APP_CONFIG.name} | Ecommerce & Meta Ads`,
+    default: `${APP_CONFIG.name} | Performance Marketing, Lead Gen & Ecommerce`,
     template: `%s | ${APP_CONFIG.name}`,
   },
   description: APP_CONFIG.description,

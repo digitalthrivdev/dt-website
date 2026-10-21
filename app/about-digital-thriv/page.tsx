@@ -23,10 +23,10 @@ export const metadata: Metadata = {
 };
 
 const services = [
-  { title: 'Dropshipping Shopify store', price: '₹2,999', copy: 'For testing products: premium template-based theme, catalog upload, compatible dropshipping supplier integration, payment, logistics and Meta setup.', href: '/shopify-website-development-packages-india#dropshipping' },
-  { title: 'Customized D2C store', price: '₹4,999', copy: 'For brand-led selling: higher customization, premium graphics, conversion-focused sections, catalog and core integrations.', href: '/shopify-website-development-packages-india#d2c' },
-  { title: 'WooCommerce D2C store', price: '₹4,999', copy: 'For businesses that prefer WordPress and WooCommerce, with catalog, payment, logistics and Meta integration.', href: '/woocommerce-development-d2c-india' },
-  { title: 'Website + Android app', price: '₹9,999', copy: 'For mobile-first D2C brands: a connected ecommerce website and Android shopping app with catalog, premium graphics and core integrations.', href: '/ecommerce-app-development-agency' },
+  { title: 'Dropshipping Shopify store', price: 'Starter Plan', copy: 'For testing products: premium template-based theme, catalog upload, compatible dropshipping supplier integration, payment, logistics and Meta setup.', href: '/shopify-website-development-packages-india#dropshipping' },
+  { title: 'Customized D2C store', price: 'Customized D2C', copy: 'For brand-led selling: higher customization, premium graphics, conversion-focused sections, catalog and core integrations.', href: '/shopify-website-development-packages-india#d2c' },
+  { title: 'WooCommerce D2C store', price: 'WooCommerce', copy: 'For businesses that prefer WordPress and WooCommerce, with catalog, payment, logistics and Meta integration.', href: '/woocommerce-development-d2c-india' },
+  { title: 'Website + Android app', price: 'Web + App', copy: 'For mobile-first D2C brands: a connected ecommerce website and Android shopping app with catalog, premium graphics and core integrations.', href: '/ecommerce-app-development-agency' },
 ] as const;
 
 const aboutPageSchema = {
@@ -84,7 +84,7 @@ export default function AboutDigitalThriv() {
 
       <section className="py-20 lg:py-28"><div className="section-shell">
         <div className="max-w-3xl"><p className="text-sm font-bold uppercase tracking-[.16em] text-primary">Defined starting points</p><h2 className="display-font mt-3 text-4xl font-bold sm:text-5xl">What Digital Thriv sells</h2><p className="mt-4 text-lg leading-8 text-muted-foreground">These are starting packages, not a promise that every custom requirement fits the base price. Catalog limits, third-party fees and exclusions are confirmed in writing.</p></div>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">{services.map(service=><article key={service.title} className="rounded-[1.6rem] border bg-background/80 p-6 sm:p-8"><div className="flex items-start justify-between gap-4"><h3 className="display-font text-2xl font-bold">{service.title}</h3><span className="shrink-0 rounded-full bg-primary/[.08] px-3 py-1 text-sm font-bold text-primary">From {service.price}</span></div><p className="mt-4 leading-7 text-muted-foreground">{service.copy}</p><Link href={service.href} className="mt-6 inline-flex items-center gap-2 font-bold text-primary">See the package scope <ArrowRight className="size-4"/></Link></article>)}</div>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">{services.map(service=><article key={service.title} className="rounded-[1.6rem] border bg-background/80 p-6 sm:p-8"><div className="flex items-start justify-between gap-4"><h3 className="display-font text-2xl font-bold">{service.title}</h3><span className="shrink-0 rounded-full bg-primary/[.08] px-3 py-1 text-sm font-bold text-primary">{service.price}</span></div><p className="mt-4 leading-7 text-muted-foreground">{service.copy}</p><Link href={service.href} className="mt-6 inline-flex items-center gap-2 font-bold text-primary">See the package scope <ArrowRight className="size-4"/></Link></article>)}</div>
       </div></section>
 
       <section className="bg-[#211832] py-20 text-white lg:py-24"><div className="section-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">

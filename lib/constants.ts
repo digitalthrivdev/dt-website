@@ -4,7 +4,7 @@ export const APP_CONFIG = {
   websiteUrl: 'https://www.digitalthriv.com',
   logo: 'https://ik.imagekit.io/digitalthriv/digital-thriv/dt-logo.png',
   description:
-    'Launch a dropshipping store from ₹2,999, a customized D2C website from ₹4,999, or a website and Android app package from ₹9,999.',
+    'Scale your business with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
   /** ISO-style label shown on legal pages */
   policyEffectiveDate: 'November 8, 2025',
   whatsappCountryCode: '91',
