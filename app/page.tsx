@@ -17,13 +17,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Performance Marketing, Lead Generation & E-commerce | Digital Thriv',
     description: 'Scale your brand with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
-    url: '/',
+    url: APP_CONFIG.websiteUrl,
+    siteName: APP_CONFIG.name,
+    locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: `${APP_CONFIG.websiteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Digital Thriv - Performance Marketing, Lead Generation & Ecommerce Growth',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Performance Marketing, Lead Generation & E-commerce | Digital Thriv',
     description: 'Scale your brand with high-ROAS performance marketing, automated lead generation funnels, and conversion-optimized ecommerce stores.',
+    images: [`${APP_CONFIG.websiteUrl}/og-image.png`],
   },
 };
 
